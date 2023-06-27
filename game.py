@@ -1259,14 +1259,14 @@ class Game():
                             self.kan_ik_verplaatsen = False
                 if self.geselecteerde_eenheid and self.kan_ik_verplaatsen:
                     if self.kortste_weg != False:
-                        if self.geselecteerde_eenheid.boot == 0:
+                        if self.geselecteerde_eenheid.boot == 0 and self.geselecteerde_eenheid.welk_type == 0:
                             vlakterijn[self.geselecteerde_eenheid.y // 16][self.geselecteerde_eenheid.x // 16] = 2
                         self.geselecteerde_eenheid.x = self.aangepaste_x
                         self.geselecteerde_eenheid.y = self.aangepaste_y
                         self.geselecteerde_eenheid.is_geselecteerd = False
                         self.geselecteerde_eenheid.uithouding -= self.kortste_weg[4]
                         self.geselecteerde_eenheid.bewegen = self.kortste_weg[3]
-                        if self.geselecteerde_eenheid.boot == 0:
+                        if self.geselecteerde_eenheid.boot == 0 and self.geselecteerde_eenheid.welk_type == 0:
                             vlakterijn[self.geselecteerde_eenheid.y // 16][self.geselecteerde_eenheid.x // 16] = 4
                         # print(self.geselecteerde_eenheid.bewegen)
                         if self.geselecteerde_eenheid.bewegen <= 0:
@@ -1331,12 +1331,15 @@ class Game():
 
     def dood_eenhijd(self, eenheid):
         i = eenheid.kleur
+        vlakterijn = getTerrein()
         self.dode_eenheiden[i].append(eenheid)
         self.aantal_eenheiden_geplaatst_nivo[i][eenheid.nivo] -= 1
         self.eenheiden[i].remove(eenheid)
         self.balans(self.geselecterde_kleur, i, eenheid.nivo)
         self.geselecteerde_eenheid.eenheden_gedood += 1
         self.geselecteerde_eenheid.ervaring += 10
+        if eenheid.boot == 0 and eenheid.welk_type == 0:
+            vlakterijn[eenheid.y // 16][eenheid.x // 16] = 4
         for bezegeeenheid in self.eenheiden[self.geselecterde_kleur]:
             if bezegeeenheid.is_geselecteerd and bezegeeenheid.bereik < 2:
                 bezegeeenheid.x = self.aangepaste_x
