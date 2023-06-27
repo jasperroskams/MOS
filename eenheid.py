@@ -1309,6 +1309,10 @@ class Eenheid():
             extra_y = game.begin_teken_y * 16
 
         if self.gezondheid > 0 or self.moraal > 0:
+            if self.boot == 0:
+                if not is_voorbeeld:
+                    if game.lijst_met_terijnblokken[(self.y + extra_y) // 16][(self.x + extra_x) // 16].ben_ik_zichtbaar == True:
+                        pyxel.rect(self.x + extra_x, self.y + extra_y, 15, 15, 6)
             if self.is_zichtbaar:
                 if self.boot == 1:
                     pyxel.blt(self.x   + extra_x, self.y      + extra_y, 0, self.nivo * 16     , self.kleur * 32       , 16, 16 ,pyxel.COLOR_BLACK)
@@ -1317,11 +1321,12 @@ class Eenheid():
                     pyxel.blt(self.x+9 + extra_x, self.y + 14 + extra_y, 0, 0                  , self.kleur * 32       ,self.moraal/(self.begin_moraal/6), 1 ,pyxel.COLOR_BLACK)
 
                 else:
-                    pyxel.rect(self.x + extra_x, self.y + extra_y, 15, 15, 6)
                     pyxel.blt(self.x   + extra_x, self.y      + extra_y, 0, self.nivo * 16     , self.kleur * 32       , 16, 16 ,pyxel.COLOR_BLACK)
                     pyxel.blt(self.x   + extra_x, self.y      + extra_y, 0, 192 + self.welk_type * 16 + self.T * 32, (self.kleur * 32) + 16, 16, 16 ,pyxel.COLOR_BLACK)
                     pyxel.blt(self.x + extra_x, self.y + 14 + extra_y, 0, 0, self.kleur * 32, self.gezondheid / (self.begin_gezondheid / 6), 1, pyxel.COLOR_BLACK)
                     pyxel.blt(self.x+9 + extra_x, self.y + 14 + extra_y, 0, 0                  , self.kleur * 32       ,self.moraal/(self.begin_moraal/6), 1 ,pyxel.COLOR_BLACK)
+
+
         else:
             pyxel.blt(self.x       + extra_x, self.y + extra_y     , 0,64                  , self.kleur * 32       , 16, 16 ,pyxel.COLOR_BLACK)
 
