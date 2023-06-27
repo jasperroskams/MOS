@@ -1,7 +1,9 @@
 
 from terrein import *
 ondergrond_impact = [2, 3, 5, 3, 1, 1, 2]
+ondergrond_impact_boot = [200, 200, 2, 200, 200, 200, 200]
 uithouding_terijn = [1, 1.5, 3, 2, 0.5, 0.5, 1]
+uithouding_terijn_boot = [100, 100, 1, 200, 500, 500, 100]
 nieuwe_lijst_met_tegels = []
 veld_met_tegels = []
 terijn = getTerrein()
@@ -22,6 +24,7 @@ def kan_ik_tot_hier(eind_x, eind_y, game, eenheid):
     begin_x = eenheid.x // 16
     begin_y = eenheid.y // 16
     bewegen = eenheid.bewegen
+    boot = eenheid.boot
     tegel = [begin_x, begin_y, [begin_x, begin_y, 0], bewegen, 0]
     lijst_met_tegels.append(tegel)
     veld_met_tegels = []
@@ -35,17 +38,25 @@ def kan_ik_tot_hier(eind_x, eind_y, game, eenheid):
                 if kortse_weg[BEWEGEN] > tegel[BEWEGEN]:
                     kortse_weg = tegel
 
-            rondom_kijken(tegel[X], tegel[Y], tegel[BEWEGEN], tegel[VORIGE])
+            rondom_kijken(tegel[X], tegel[Y], tegel[BEWEGEN], tegel[VORIGE], boot)
         lijst_met_tegels = nieuwe_lijst_met_tegels
     if kortse_weg[BEWEGEN] < 20:
         # print('True')
         vorige_tegel = kortse_weg[VORIGE]
-        kortse_weg[UITHOUDING] = uithouding_terijn[terijn[kortse_weg[Y]][kortse_weg[X]]]
-        kortse_weg[UITHOUDING] -= uithouding_terijn[terijn[begin_y][begin_x]]
-        while len(vorige_tegel) >= 4:
-            kortse_weg[UITHOUDING] += uithouding_terijn[terijn[vorige_tegel[Y]][vorige_tegel[X]]]
-            game.highlight((vorige_tegel[X] + game.begin_teken_x) * 16, (vorige_tegel[Y] + game.begin_teken_y) * 16)
-            vorige_tegel = vorige_tegel[VORIGE]
+        if eenheid.boot == 1:
+            kortse_weg[UITHOUDING] = uithouding_terijn[terijn[kortse_weg[Y]][kortse_weg[X]]]
+            kortse_weg[UITHOUDING] -= uithouding_terijn[terijn[begin_y][begin_x]]
+            while len(vorige_tegel) >= 4:
+                kortse_weg[UITHOUDING] += uithouding_terijn[terijn[vorige_tegel[Y]][vorige_tegel[X]]]
+                game.highlight((vorige_tegel[X] + game.begin_teken_x) * 16, (vorige_tegel[Y] + game.begin_teken_y) * 16)
+                vorige_tegel = vorige_tegel[VORIGE]
+        else:
+            kortse_weg[UITHOUDING] = uithouding_terijn_boot[terijn[kortse_weg[Y]][kortse_weg[X]]]
+            kortse_weg[UITHOUDING] -= uithouding_terijn_boot[terijn[begin_y][begin_x]]
+            while len(vorige_tegel) >= 4:
+                kortse_weg[UITHOUDING] += uithouding_terijn_boot[terijn[vorige_tegel[Y]][vorige_tegel[X]]]
+                game.highlight((vorige_tegel[X] + game.begin_teken_x) * 16, (vorige_tegel[Y] + game.begin_teken_y) * 16)
+                vorige_tegel = vorige_tegel[VORIGE]
         # print(kortse_weg[4])
         return kortse_weg
     else:
@@ -53,7 +64,7 @@ def kan_ik_tot_hier(eind_x, eind_y, game, eenheid):
         return False
 
 
-def rondom_kijken(begin_x, begin_y, begin_bewegen, vorige):
+def rondom_kijken(begin_x, begin_y, begin_bewegen, vorige, boot):
     # print(vorige)
     for x in range(-1, 2):
         for y in range(-1, 2):
@@ -62,7 +73,10 @@ def rondom_kijken(begin_x, begin_y, begin_bewegen, vorige):
             if x == 0 or y == 0:
                 if 0 <= xPos < len(terijn) and 0 <= yPos < len(terijn):
                     bewegen = begin_bewegen
-                    bewegen -= ondergrond_impact[terijn[yPos][xPos]]
+                    if boot == 1:
+                        bewegen -= ondergrond_impact[terijn[yPos][xPos]]
+                    else:
+                        bewegen -= ondergrond_impact_boot[terijn[yPos][xPos]]
                     if bewegen >= 0:
                         if veld_met_tegels[yPos][xPos] <= bewegen:
                             veld_met_tegels[yPos][xPos] = bewegen

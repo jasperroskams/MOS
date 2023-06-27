@@ -5,7 +5,8 @@ import route
 from eenheid import Eenheid, eenheden_sterren
 from terrein import *
 from route import kan_ik_tot_hier
-import AI
+# import AI
+from munitie import *
 punten = 0
 terijn_namen = ['Gras', 'Bos', 'Water', 'Berg', 'Weg', 'Brug', 'Gebouw']
 terijn_eigenschapen = [[], ['berijk - 2', 'zichtbaar + 3'], ['verdedigen - 6'], ['verdedigen + 5', 'berijk + 2', 'zicht + 4', 'zichtbaar - 2'], [], [], ['verdedigen + 5']]
@@ -20,13 +21,14 @@ BEGIN = 2
 VERLOOP_EN_EINDE = 3
 TERREIN = 4
 EENHEDEN = 5
-AANVALLEN = 6
-MUNITIE = 7
-UITHOUDING_EN_BEWEGEN = 8
-ZICHT_EENHEDEN = 9
-ZICHT_TERREIN = 10
-KNOPPEN = 11
-TERREININSTELLINGEN = 12
+BOOTEN = 6
+AANVALLEN = 7
+MUNITIE = 8
+UITHOUDING_EN_BEWEGEN = 9
+ZICHT_EENHEDEN = 10
+ZICHT_TERREIN = 11
+KNOPPEN = 12
+TERREININSTELLINGEN = 13
 
 
 class Game():
@@ -53,6 +55,8 @@ class Game():
         self.eenheiden_punten = [48, 48, 48, 48, 48]
         self.begin_max_aantal_eenheiden = [5, 2, 2, 1, 1, 1]
         self.max_aantal_eenheiden = [5, 2, 2, 1, 1, 1]
+        self.begin_max_aantal_eenheiden_boot = [3, 9]
+        self.max_aantal_eenheiden_boot = [3, 9]
         self.aantal_eenheiden_geplaatst = [0,  0,  0, 0, 0, 0]
         self.begin_max_aantal_eenheiden_nivo = [8, 4,  1, 1]
         self.max_aantal_eenheiden_nivo = [8, 4,  1, 1]
@@ -103,7 +107,7 @@ class Game():
         self.laats_geselekteerde_eenheid = -1
         self.T = 0
         self.menu_pagina = 0
-        self.aantal_menu_paginas = 12
+        self.aantal_menu_paginas = 13
         self.rivier_kans = 4
         self.rivier_grote = 0
         self.weg_kans = 3
@@ -119,12 +123,11 @@ class Game():
         self.zee_kans = 1
         self.zee_grote = 4
         self.ai = 0
+        self.boot = 0
+        self.munieties = []
 
-
-
-
-    def nieuw_eenheid(self, k, t, n, x, y, T):
-        neweenheid = Eenheid(k, t, n, x, y, T)
+    def nieuw_eenheid(self, k, t, n, x, y, T, B):
+        neweenheid = Eenheid(k, t, n, x, y, T, B)
         self.eenheiden[k].append(neweenheid)
 
     def balans(self, gew_team, ver_team, nivo):
@@ -153,8 +156,8 @@ class Game():
                     self.laats_geselekteerde_eenheid = -1
 
 
-        if pyxel.btnp(pyxel.KEY_B):
-            self.aan_het_spelen = not self.aan_het_spelen
+        # if pyxel.btnp(pyxel.KEY_B):
+        #     self.aan_het_spelen = not self.aan_het_spelen
 
         if pyxel.btnp(pyxel.KEY_SPACE):
             if self.geselecteerde_eenheid:
@@ -192,6 +195,8 @@ class Game():
                         self.menu_pagina = TERREIN
                     if  12 + EENHEDEN * 10 < pyxel.mouse_y <  22 + EENHEDEN * 10:
                         self.menu_pagina = EENHEDEN
+                    if  12 + BOOTEN * 10 < pyxel.mouse_y <  22 + BOOTEN * 10:
+                        self.menu_pagina = BOOTEN
                     if  12 + AANVALLEN * 10 < pyxel.mouse_y <  22 + AANVALLEN * 10:
                         self.menu_pagina = AANVALLEN
                     if  12 + MUNITIE * 10 < pyxel.mouse_y <  22 + MUNITIE * 10:
@@ -368,15 +373,27 @@ class Game():
                 else:
                     self.nivo = 3
             if pyxel.btnp(pyxel.KEY_RIGHT):
-                if self.type < 5:
-                    self.type += 1
+                if self.boot:
+                    if self.type < 1:
+                        self.type += 1
+                    else:
+                        self.type = 0
                 else:
-                    self.type = 0
+                    if self.type < 5:
+                        self.type += 1
+                    else:
+                        self.type = 0
             if pyxel.btnp(pyxel.KEY_LEFT):
-                if self.type > 0:
-                    self.type -= 1
+                if self.boot:
+                    if self.type > 0:
+                        self.type -= 1
+                    else:
+                        self.type = 1
                 else:
-                    self.type = 5
+                    if self.type > 0:
+                        self.type -= 1
+                    else:
+                        self.type = 5
 
 # aanvallen
             if pyxel.btnr(pyxel.MOUSE_BUTTON_RIGHT):
@@ -399,7 +416,7 @@ class Game():
                 for eenheid in self.eenheiden[self.geselecterde_kleur]:
                     eenheid.is_zichtbaar = True
 
-            self.voorbeeldeenheid = Eenheid(self.kleur, self.type, self.nivo, 240, 0, self.T)
+            self.voorbeeldeenheid = Eenheid(self.kleur, self.type, self.nivo, 240, 0, self.T, self.boot)
             self.voorbeeldeenheid.is_zichtbaar = True
             if pyxel.btnp(pyxel.KEY_P):
                 self.eenheiden_aan_het_plaatsen = not self.eenheiden_aan_het_plaatsen
@@ -493,6 +510,8 @@ class Game():
                 if self.menu_pagina > self.aantal_menu_paginas:
                     self.menu_pagina = 0
 
+        for munitie in self.munieties:
+            munitie.update()
 
 
         if pyxel.btnp(pyxel.KEY_W):
@@ -506,11 +525,14 @@ class Game():
             print('_______________________________________________________________________________________________________________________________________________________________________')
 
 
-        if pyxel.btnp(pyxel.KEY_B):
-            self.ai = AI.AI(self.eenheiden[self.team_1])
-        if self.ai != 0:
-            self.ai.update(self)
+        # if pyxel.btnp(pyxel.KEY_K):
+        #     self.ai = AI.AI(self.eenheiden[self.team_1])
+        # if self.ai != 0:
+        #     self.ai.update(self)
 
+        if pyxel.btnp(pyxel.KEY_B):
+            self.boot = not self.boot
+            self.type = 0
 
 
 
@@ -552,14 +574,14 @@ class Game():
                     pyxel.text(2,  42, ' 4: verloop en einde                                            ', 7)
                     pyxel.text(2,  52, ' 5: terrein                                                     ', 7),
                     pyxel.text(2,  62, ' 6: eenheden                                                    ', 7),
-                    pyxel.text(2,  72, ' 7: aanvallen                                                   ', 7)
-                    pyxel.text(2,  82, ' 7: munitie                                                     ', 7)
-                    pyxel.text(2,  92, ' 8: uithouding en bewegen                                       ', 7)
-                    pyxel.text(2, 102, ' 9: zicht: eenheden                                             ', 7)
-                    pyxel.text(2, 112, '10: zicht: terrein                                              ', 7)
-                    pyxel.text(2, 122, '11: knoppen                                                     ', 7)
-                    pyxel.text(2, 132, '12: terreininstellingen                                         ', 7)
-                    pyxel.text(2, 142, '                                                                ', 7)
+                    pyxel.text(2,  72, ' 7: boten                                                       ', 7),
+                    pyxel.text(2,  82, ' 8: aanvallen                                                   ', 7)
+                    pyxel.text(2,  92, ' 9: munitie                                                     ', 7)
+                    pyxel.text(2, 102, '10: uithouding en bewegen                                       ', 7)
+                    pyxel.text(2, 112, '11: zicht: eenheden                                             ', 7)
+                    pyxel.text(2, 122, '12: zicht: terrein                                              ', 7)
+                    pyxel.text(2, 132, '13: knoppen                                                     ', 7)
+                    pyxel.text(2, 142, '14: terreininstellingen                                         ', 7)
                     pyxel.text(2, 152, '                                                                ', 7)
                     pyxel.text(2, 162, '                                                                ', 7)
                     pyxel.text(2, 172, '                                                                ', 7)
@@ -600,16 +622,16 @@ class Game():
                     pyxel.text(2,  12, 'Verloop                                                         ', 7)
                     pyxel.text(2,  22, 'Wanneer je aan de beurt bent kan je eenheden selecteren en      ', 7)
                     pyxel.text(2,  32, 'verplaatsen of aanvallen, dit staat uitgelegd onder aanvallen   ', 7)
-                    pyxel.text(2,  42, 'Om de informatie over je terrein te bekijken druk je op (i)     ', 7),pyxel.text(220, 42, '(i)', 6)
+                    pyxel.text(2,  42, 'Om de informatie over je terrein te bekijken druk je op (i)     ', 7),pyxel.text(226, 42, '(i)', 6)
                     pyxel.text(2,  52, 'Als je een beurt wil overslaan met de geselecteerde eenheid     ', 7)
-                    pyxel.text(2,  62, 'druk je op de (spatiebalk)                                      ', 7), pyxel.text(90, 62, '(spatiebalk)', 6)
-                    pyxel.text(2,  72, 'Via (Tab) ga je naar de volgende eenheid die binnen diezelfde   ', 7), pyxel.text(150, 72, '(Tab)', 6)
+                    pyxel.text(2,  62, 'druk je op de  spatiebalk                                       ', 7), pyxel.text(62, 62, 'spatiebalk', 6)
+                    pyxel.text(2,  72, 'Via  Tab  ga je naar de volgende eenheid die binnen diezelfde   ', 7), pyxel.text(22, 72, 'Tab', 6)
                     pyxel.text(2,  82, 'beurt nog niets gedaan heeft                                    ', 7)
                     pyxel.text(2,  92, 'Via enter begin of eindig je je beurt                           ', 7)
-                    pyxel.text(2, 102, 'Je plaatst je eenheden (linkermuisknop)                         ', 7), pyxel.text(180, 102, '(linkermuisknop)', 6)
-                    pyxel.text(2, 112, 'Selecteren en verplaatsen, doe je via de linkermuisknop         ', 7), pyxel.text(195, 112, '(linkermuisknop)', 6)
-                    pyxel.text(2, 122, 'Aanvallen doe je via de rechtermuisknop.                        ', 7), pyxel.text(150, 122, '(rechtermuisknop)', 6)
-                    pyxel.text(2, 132, 'Via de middelste muisknop kan je bouwen(acties van de ingenieur)', 7), pyxel.text(140, 132, '(middelste muisknop)', 6)
+                    pyxel.text(2, 102, 'Je plaatst je eenheden (linkermuisknop)                         ', 7), pyxel.text(94, 102, '(linkermuisknop)', 6)
+                    pyxel.text(2, 112, 'Selecteren en verplaatsen, doe je via de linkermuisknop         ', 7), pyxel.text(166, 112, 'linkermuisknop', 6)
+                    pyxel.text(2, 122, 'Aanvallen doe je via de rechtermuisknop.                        ', 7), pyxel.text(98, 122, 'rechtermuisknop', 6)
+                    pyxel.text(2, 132, 'Via de middelste muisknop kan je bouwen(acties van de ingenieur)', 7), pyxel.text(30, 132, 'middelste muisknop', 6)
                     pyxel.text(2, 142, 'Deze staan verder uitgelegd bij de eenheden                     ', 7)
                     pyxel.text(2, 152, '                                                                ', 7)
                     pyxel.text(2, 162, '                                                                ', 7)
@@ -677,6 +699,31 @@ class Game():
                     pyxel.text(2, 212, 'Bos --> gras                                                    ', 7)
                     pyxel.text(2, 222, 'Gras --> weg                                                    ', 7)
                     pyxel.text(2, 232, 'Water --> brug                                                  ', 7)
+                    pyxel.rect(0, 18, self.breedte, 1, 7)
+                if self.menu_pagina == BOOTEN:
+                    pyxel.text(2,  12, 'Boten                                                           ', 7)
+                    pyxel.text(2,  22, 'druk op   om boten te kunnen plaatsen                           ', 7),pyxel.text(30, 22, '(b)', 10)
+                    pyxel.text(2,  32, 'boten kunnen alleen op water bewegen                            ', 7)
+                    pyxel.text(2,  42, 'bij transportboten is het net als of er een weg onder is        ', 7)
+                    pyxel.text(2,  52, 'hierdoor kunnen eenheden gemakelijker een rivier over           ', 7)
+                    pyxel.text(2,  62, 'LET OP                                                          ', 7),
+                    pyxel.text(2,  72, 'je kunt de eenheden niet op de boot zeten                       ', 7)
+                    pyxel.text(2,  82, '                                                                ', 7)
+                    pyxel.text(2,  92, '                                                                ', 7)
+                    pyxel.text(2, 102, '                                                                ', 7)
+                    pyxel.text(2, 112, '                                                                ', 7)
+                    pyxel.text(2, 122, '                                                                ', 7)
+                    pyxel.text(2, 132, '                                                                ', 7)
+                    pyxel.text(2, 142, '                                                                ', 7)
+                    pyxel.text(2, 152, '                                                                ', 7)
+                    pyxel.text(2, 162, '                                                                ', 7)
+                    pyxel.text(2, 172, '                                                                ', 7)
+                    pyxel.text(2, 182, '                                                                ', 7)
+                    pyxel.text(2, 192, '                                                                ', 7)
+                    pyxel.text(2, 202, '                                                                ', 7)
+                    pyxel.text(2, 212, '                                                                ', 7)
+                    pyxel.text(2, 222, '                                                                ', 7)
+                    pyxel.text(2, 232, '                                                                ', 7)
                     pyxel.rect(0, 18, self.breedte, 1, 7)
                 if self.menu_pagina == AANVALLEN:
                     pyxel.text(2,  12, 'Aanvallen                                                       ', 7)
@@ -831,6 +878,9 @@ class Game():
                     if pyxel.btn(pyxel.KEY_C):
                         pyxel.rect(88, begin_y + 16, 7, 7, 9)
                         pyxel.text(86, begin_y - 30, 'volgende kleur', 7)
+                    if pyxel.btn(pyxel.KEY_B):
+                        pyxel.rect(104, begin_y + 16, 7, 7, 9)
+                        pyxel.text(86, begin_y - 30, 'veranderen tussen boten en eenheden', 7)
                     if pyxel.btn(pyxel.KEY_I):
                         pyxel.rect(122, begin_y, 7, 7, 9)
                         pyxel.text(86, begin_y - 30, 'terrein info', 7)
@@ -862,7 +912,7 @@ class Game():
                     pyxel.blt(48, begin_y - 2, 2, 0, 104, 144, 40, pyxel.COLOR_BLACK)
                 if self.menu_pagina == TERREININSTELLINGEN:
                     pyxel.text(2,  12, 'terreininstellingen                                             ', 7)
-                    pyxel.text(2,  22, '                    kans                    groote              ', 7)
+                    pyxel.text(2,  22, '                    kans                    grootte             ', 7)
                     pyxel.text(2,  32, 'weg                                                             ', 7),pyxel.text(89, 33, str(self.weg_kans), 7),pyxel.text(189, 33, str(self.weg_grote), 7)
                     pyxel.text(2,  42, 'rivier                                                          ', 7),pyxel.text(89, 43, str(self.rivier_kans), 7),pyxel.text(189, 43, str(self.rivier_grote), 7)
                     pyxel.text(2,  52, 'bos                                                             ', 7),pyxel.text(89, 53, str(self.bos_kans), 7),pyxel.text(189, 53, str(self.bos_grote), 7)
@@ -1086,22 +1136,24 @@ class Game():
                     self.kortste_weg = kan_ik_tot_hier(self.x // 16 - self.begin_teken_x, self.y // 16 - self.begin_teken_y, self, self.geselecteerde_eenheid)
                     if self.kortste_weg != False:
                         self.highlight(self.x, self.y)
+                for munitie in self.munieties:
+                    munitie.draw(self)
                 # print(self.schietanimatie)
-                if self.schietanimatie < self.duur_schietanimatie:
-                    pyxel.blt(self.schietanimatie_x + self.begin_teken_x * 16, self.schietanimatie_y + self.begin_teken_y * 16, 2, 0, 0, 16, 16, pyxel.COLOR_BLACK)
-                    if self.schietrichting_x > 0:
-                        if self.schietanimatie_x < self.einde_schietanimatie_x:
-                            self.schietanimatie_x += 1 * self.schietrichting_x
-                    else:
-                        if self.schietanimatie_x > self.einde_schietanimatie_x:
-                            self.schietanimatie_x += 1 * self.schietrichting_x
-                    if self.schietrichting_y > 0:
-                        if self.schietanimatie_y < self.einde_schietanimatie_y:
-                            self.schietanimatie_y += 1 * self.schietrichting_y
-                    else:
-                        if self.schietanimatie_y > self.einde_schietanimatie_y:
-                            self.schietanimatie_y += 1 * self.schietrichting_y
-                    self.schietanimatie += 1
+                # if self.schietanimatie < self.duur_schietanimatie:
+                #     pyxel.blt(self.schietanimatie_x + self.begin_teken_x * 16, self.schietanimatie_y + self.begin_teken_y * 16, 2, 0, 0, 16, 16, pyxel.COLOR_BLACK)
+                #     if self.schietrichting_x > 0:
+                #         if self.schietanimatie_x < self.einde_schietanimatie_x:
+                #             self.schietanimatie_x += 1 * self.schietrichting_x
+                #     else:
+                #         if self.schietanimatie_x > self.einde_schietanimatie_x:
+                #             self.schietanimatie_x += 1 * self.schietrichting_x
+                #     if self.schietrichting_y > 0:
+                #         if self.schietanimatie_y < self.einde_schietanimatie_y:
+                #             self.schietanimatie_y += 1 * self.schietrichting_y
+                #     else:
+                #         if self.schietanimatie_y > self.einde_schietanimatie_y:
+                #             self.schietanimatie_y += 1 * self.schietrichting_y
+                #     self.schietanimatie += 1
 
                 pyxel.rect(0, self.hoogte - 6, 25, 6, 0)
                 pyxel.rect(0, self.hoogte - 5, 24, 4, self.lijst_met_eenheidkleuren[self.team_1])
@@ -1178,20 +1230,23 @@ class Game():
         #         if eenheid.x == self.aangepaste_x and eenheid.y == self.aangepaste_y:
         #             self.kan_ik_verplaatsen = False
         # if self.eenheiden_aan_het_plaatsen and self.max_aantal_eenheiden[self.type] > self.aantal_eenheiden_geplaatst[self.type] and self.eenheiden_punten[self.kleur] > self.nivo and self.max_aantal_eenheiden_nivo[self.nivo] > self.aantal_eenheiden_geplaatst_nivo[self.kleur][self.nivo]:
-        if self.eenheiden_aan_het_plaatsen and self.max_aantal_eenheiden_geplaatst_punten[self.kleur][self.type] > self.aantal_eenheiden_geplaatst_punten[self.kleur][self.type] + self.nivo and self.max_aantal_eenheiden_nivo[self.nivo] > self.aantal_eenheiden_geplaatst_nivo[self.kleur][self.nivo] and self.eenheiden_punten[self.geselecterde_kleur] - self.nivo >= 0:
-            if self.breedte - 16 != self.x or self.hoogte - 16 != self.y:
-                # print(f"{self.max_aantal_eenheiden_geplaatst_punten[self.kleur][self.type]} : {self.aantal_eenheiden_geplaatst_punten[self.kleur][self.type]}")
-                self.nieuw_eenheid(self.kleur, self.type, self.nivo, self.aangepaste_x, self.aangepaste_y, self.T)
-                self.eenheiden_punten[self.kleur] -= self.nivo + 1
-                self.aantal_eenheiden_geplaatst[self.type] += 1
-                self.aantal_eenheiden_geplaatst_nivo[self.kleur][self.nivo] += 1
-                self.aantal_eenheiden_geplaatst_punten[self.kleur][self.type] += self.nivo + 1
-                if self.team_1 < 0:
-                    self.team_1 = self.kleur
-                elif self.geselecterde_kleur != self.team_1:
-                    self.team_2 = self.kleur
+        if self.eenheiden_aan_het_plaatsen:
+            if self.max_aantal_eenheiden_geplaatst_punten[self.kleur][self.type] > self.aantal_eenheiden_geplaatst_punten[self.kleur][self.type] + self.nivo or self.boot:
+                if self.max_aantal_eenheiden_nivo[self.nivo] > self.aantal_eenheiden_geplaatst_nivo[self.kleur][self.nivo] and self.eenheiden_punten[self.geselecterde_kleur] - self.nivo >= 0:
+                    if self.breedte - 16 != self.x or self.hoogte - 16 != self.y:
+                        # print(f"{self.max_aantal_eenheiden_geplaatst_punten[self.kleur][self.type]} : {self.aantal_eenheiden_geplaatst_punten[self.kleur][self.type]}")
+                        self.nieuw_eenheid(self.kleur, self.type, self.nivo, self.aangepaste_x, self.aangepaste_y, self.T, self.boot)
+                        self.eenheiden_punten[self.kleur] -= self.nivo + 1
+                        self.aantal_eenheiden_geplaatst[self.type] += 1
+                        self.aantal_eenheiden_geplaatst_nivo[self.kleur][self.nivo] += 1
+                        self.aantal_eenheiden_geplaatst_punten[self.kleur][self.type] += self.nivo + 1
+                        if self.team_1 < 0:
+                            self.team_1 = self.kleur
+                        elif self.geselecterde_kleur != self.team_1:
+                            self.team_2 = self.kleur
         elif not self.eenheiden_aan_het_plaatsen:
             for geselecteerde_eenheid in self.eenheiden[self.geselecterde_kleur]:
+                print(geselecteerde_eenheid.boot)
                 if geselecteerde_eenheid.x == self.aangepaste_x and geselecteerde_eenheid.y == self.aangepaste_y and not geselecteerde_eenheid.is_geweest:
                     for eenheid in self.eenheiden[self.geselecterde_kleur]:
                         if eenheid.x != self.aangepaste_x or eenheid.y != self.aangepaste_y:
@@ -1204,11 +1259,15 @@ class Game():
                             self.kan_ik_verplaatsen = False
                 if self.geselecteerde_eenheid and self.kan_ik_verplaatsen:
                     if self.kortste_weg != False:
+                        if self.geselecteerde_eenheid.boot == 0:
+                            vlakterijn[self.geselecteerde_eenheid.y // 16][self.geselecteerde_eenheid.x // 16] = 2
                         self.geselecteerde_eenheid.x = self.aangepaste_x
                         self.geselecteerde_eenheid.y = self.aangepaste_y
                         self.geselecteerde_eenheid.is_geselecteerd = False
                         self.geselecteerde_eenheid.uithouding -= self.kortste_weg[4]
                         self.geselecteerde_eenheid.bewegen = self.kortste_weg[3]
+                        if self.geselecteerde_eenheid.boot == 0:
+                            vlakterijn[self.geselecteerde_eenheid.y // 16][self.geselecteerde_eenheid.x // 16] = 4
                         # print(self.geselecteerde_eenheid.bewegen)
                         if self.geselecteerde_eenheid.bewegen <= 0:
                             self.geselecteerde_eenheid.is_geweest = True
@@ -1442,19 +1501,23 @@ class Game():
                         else:
                             extra_aanvalen_moraal = 0
                         # print(extra_aanvalen_moraal)
+
                         print(f"{positiefx_verschil} : {positiefy_verschil} : {self.geselecteerde_eenheid.bewegen}")
                         if eenheid.x == self.aangepaste_x and eenheid.y == self.aangepaste_y and self.geselecteerde_eenheid.bereik >= self.geselecteerde_eenheid.verschil / 16:
                             self.kan_ik_aanvallen = True
-                            if self.geselecteerde_eenheid.welk_type == 4:
-                                self.schietanimatie = 0
-                                if positiefx_verschil > positiefy_verschil:
-                                    self.duur_schietanimatie = x_verschil * self.schietrichting_x
-                                else:
-                                    self.duur_schietanimatie = y_verschil * self.schietrichting_y
-                                self.schietanimatie_x = self.geselecteerde_eenheid.x
-                                self.einde_schietanimatie_x = self.aangepaste_x
-                                self.schietanimatie_y = self.geselecteerde_eenheid.y
-                                self.einde_schietanimatie_y = self.aangepaste_y
+                            self.schietanimatie = 0
+                            if positiefx_verschil > positiefy_verschil:
+                                self.duur_schietanimatie = x_verschil * self.schietrichting_x
+                            else:
+                                self.duur_schietanimatie = y_verschil * self.schietrichting_y
+                            self.schietanimatie_x = self.geselecteerde_eenheid.x
+                            self.einde_schietanimatie_x = self.aangepaste_x
+                            self.schietanimatie_y = self.geselecteerde_eenheid.y
+                            self.einde_schietanimatie_y = self.aangepaste_y
+                            new_munitie = Munitie(self.geselecteerde_eenheid, self.duur_schietanimatie, self.schietanimatie_x, self.schietanimatie_y, self.einde_schietanimatie_x, self.einde_schietanimatie_y, self.schietrichting_x, self.schietrichting_y)
+                            self.munieties.append(new_munitie)
+                            # if self.geselecteerde_eenheid.welk_type == 4:
+
                             self.Naar_achter(eenheid, x_verschil, y_verschil, positiefx_verschil, positiefy_verschil)
                             eenheid.raak_gewond(self.geselecteerde_eenheid.aanvallen, self.geselecteerde_eenheid.aanvallen_moraal + extra_aanvalen_moraal)
                             self.geselecteerde_eenheid.ervaring += self.geselecteerde_eenheid.aanvallen + 1
