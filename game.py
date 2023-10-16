@@ -31,7 +31,7 @@ ZICHT_TERREIN = 11
 KNOPPEN = 12
 TERREININSTELLINGEN = 13
 
-"""Jantje zag eens pruimen hangen"""
+
 
 
 class Game():
