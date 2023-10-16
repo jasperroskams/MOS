@@ -13,18 +13,15 @@ class Munitie():
         self.schietrichting_y = schietrichting_y
         self.soort = 0
         if eenheid.boot == 1:
-            if eenheid.T == 0:
-                if eenheid.welk_type == 4:
-                    self.soort = 0
-                elif eenheid.welk_type == 3:
+            if eenheid.T <= 1:
+                if eenheid.welk_type == 3:
                     self.soort = 32
-                else:
-                    if eenheid.bereik > 1:
-                        self.soort = 0
+                elif eenheid.bereik > 1:
+                    self.soort = 0
             else:
-                if eenheid.welk_type != 3 and eenheid.welk_type != 5 and eenheid.munitie > 0:
-                    self.soort = 16
-                elif eenheid.welk_type == 3:
+                if eenheid.welk_type == 3:
+                    self.soort = 32
+                elif eenheid.bereik > 1:
                     self.soort = 16
         else:
             if eenheid.munitie > 0:

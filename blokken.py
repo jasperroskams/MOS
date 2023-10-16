@@ -14,6 +14,7 @@ class Blok():
         self.timer = 0
         self.ben_ik_zichtbaar = False
         self.vorige_ben_ik_zichtbaar = False
+        self.ben_ik_voledig_zichtbaar = False
 
 
 
@@ -45,12 +46,14 @@ class Blok():
             game.aan_het_spelen = True
             if len(game.terrein) < 17:
                 terrein.randomterrein(game)
+                game.aan_het_spelen = True
             # game.geselecterde_kleur = int(random.triangular(0, 5))
             # game.voorbeeldeenheid = game.geselecterde_kleur
 
     def vergroot(self, game):
         if self.w >= 15:
             self.verschil = 0
+            self.ben_ik_voledig_zichtbaar = True
         if not game.toon_menu:
             pyxel.rect(self.x + game.begin_teken_x * 16, self.y + game.begin_teken_y * 16, self.w, self.h, self.c)
             self.w += 2 * self.verschil
@@ -60,6 +63,7 @@ class Blok():
 
 
     def verklijn(self, game):
+        self.ben_ik_voledig_zichtbaar = False
         if self.w <= -1:
             self.w = -1
             self.verschil = 0

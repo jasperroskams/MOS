@@ -4,6 +4,8 @@ ondergrond_impact = [2, 3, 5, 3, 1, 1, 2]
 ondergrond_impact_boot = [200, 200, 2, 200, 200, 200, 200]
 uithouding_terijn = [1, 1.5, 3, 2, 0.5, 0.5, 1]
 uithouding_terijn_boot = [100, 100, 1, 200, 500, 500, 100]
+bouwsel_impact = [0, 2, 2 ,1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+uithouding_bouwsel = [0, 1, 2 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 nieuwe_lijst_met_tegels = []
 veld_met_tegels = []
 terijn = getTerrein()
@@ -38,7 +40,7 @@ def kan_ik_tot_hier(eind_x, eind_y, game, eenheid):
                 if kortse_weg[BEWEGEN] > tegel[BEWEGEN]:
                     kortse_weg = tegel
 
-            rondom_kijken(tegel[X], tegel[Y], tegel[BEWEGEN], tegel[VORIGE], boot)
+            rondom_kijken(tegel[X], tegel[Y], tegel[BEWEGEN], tegel[VORIGE], boot, game)
         lijst_met_tegels = nieuwe_lijst_met_tegels
     if kortse_weg[BEWEGEN] < 20:
         # print('True')
@@ -64,7 +66,7 @@ def kan_ik_tot_hier(eind_x, eind_y, game, eenheid):
         return False
 
 
-def rondom_kijken(begin_x, begin_y, begin_bewegen, vorige, boot):
+def rondom_kijken(begin_x, begin_y, begin_bewegen, vorige, boot, game):
     # print(vorige)
     for x in range(-1, 2):
         for y in range(-1, 2):
@@ -75,6 +77,9 @@ def rondom_kijken(begin_x, begin_y, begin_bewegen, vorige, boot):
                     bewegen = begin_bewegen
                     if boot == 1:
                         bewegen -= ondergrond_impact[terijn[yPos][xPos]]
+
+
+                        bewegen -= bouwsel_impact[game.bouwsels[yPos][xPos]]
                     else:
                         bewegen -= ondergrond_impact_boot[terijn[yPos][xPos]]
                     if bewegen >= 0:
@@ -85,7 +90,7 @@ def rondom_kijken(begin_x, begin_y, begin_bewegen, vorige, boot):
                             while len(newvorige) > 3:
                                 newvorige = newvorige[VORIGE]
                             if len(newvorige) > 3:
-                                uithouding = newvorige[UITHOUDING] + uithouding_terijn[terijn[yPos][xPos]]
+                                uithouding = newvorige[UITHOUDING] + uithouding_terijn[terijn[yPos][xPos]] + uithouding_bouwsel[game.bouwsels[yPos][xPos]]
                             # print(vorige)
                             tegel = [xPos, yPos, [begin_x, begin_y, vorige, bewegen, uithouding], bewegen, uithouding]
                             nieuwe_lijst_met_tegels.append(tegel)

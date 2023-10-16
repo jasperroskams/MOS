@@ -131,7 +131,8 @@ def randomterrein(game):
                 while xpos != doel:
                     # print(ypos, xpos)
                     for i in range (0, grote_rivier):
-                        vlakterrein[ypos + i][xpos] = 2
+                        if xpos + i <= len(vlakterrein):
+                            vlakterrein[ypos + i][xpos] = 2
                     xpos += 1
                     ypos += int(random.triangular(-14, 14) / 10)
                     if ypos > hoogte - i:
@@ -187,10 +188,20 @@ def randomterrein(game):
             if is_er_een_zee < 1 + game.grootte / 2:
                 if ypos <= grote_zee + game.grootte:
                     ypos = grote_zee + game.grootte
+            vorige_x = xpos
+            vorige_y = ypos
             if rirchting < 8:
                 while ypos != doel:
                     # print(ypos, xpos)
                     for i in range (0, grote_weg):
+                        if vorige_x != xpos:
+                            if vorige_x + i <= len(vlakterrein):
+                                if vlakterrein[ypos][vorige_x + i] == 2:
+                                    vlakterrein[ypos][vorige_x + i] = 5
+                                elif vlakterrein[ypos][vorige_x + i] == 7:
+                                    vlakterrein[ypos][vorige_x + i] = 8
+                                else:
+                                    vlakterrein[ypos][vorige_x + i] = 4
                         if xpos + i <= len(vlakterrein):
                             if vlakterrein[ypos][xpos + i] == 2:
                                 vlakterrein[ypos][xpos + i] = 5
@@ -199,6 +210,7 @@ def randomterrein(game):
                             else:
                                 vlakterrein[ypos][xpos + i] = 4
                     ypos += 1
+                    vorige_x = xpos
                     xpos += int(random.triangular(-18, 18) / 10)
                     if xpos > breedte:
                         xpos = breedte
@@ -206,13 +218,23 @@ def randomterrein(game):
                         xpos = 0
             if rirchting > 8:
                 while xpos != doel:
-                    if vlakterrein[ypos][xpos] == 2:
-                        vlakterrein[ypos][xpos] = 5
-                    elif vlakterrein[ypos][xpos] == 7:
-                        vlakterrein[ypos][xpos] = 8
-                    else:
-                        vlakterrein[ypos][xpos] = 4
+                    if vorige_y != ypos:
+                        if vorige_y + i <= len(vlakterrein):
+                            if vlakterrein[vorige_y][xpos] == 2:
+                                vlakterrein[vorige_y][xpos] = 5
+                            elif vlakterrein[vorige_y][xpos] == 7:
+                                vlakterrein[vorige_y][xpos] = 8
+                            else:
+                                vlakterrein[vorige_y][xpos] = 4
+                    if ypos + i <= len(vlakterrein):
+                        if vlakterrein[ypos][xpos] == 2:
+                            vlakterrein[ypos][xpos] = 5
+                        elif vlakterrein[ypos][xpos] == 7:
+                            vlakterrein[ypos][xpos] = 8
+                        else:
+                            vlakterrein[ypos][xpos] = 4
                     xpos += 1
+                    vorige_y = ypos
                     ypos += int(random.triangular(-14, 14) / 10)
                     if ypos > hoogte:
                         ypos = hoogte
