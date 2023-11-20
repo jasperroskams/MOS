@@ -41,11 +41,25 @@ vlakterrein = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ]
 
+RIVIER = 0
+WEG = 1
+BOS = 2
+BERG = 3
+GEBOUW = 4
+MEER = 5
+ZEE = 6
+lijst_met_terijnkleuren = [11, 3, 6, 13, 15, 4, 14, 13, 4]
+
+
 def getTerrein():
     global vlakterrein
     return vlakterrein
 
-
+class terein_instelling():
+    def __init__(self, naam, kans, grote):
+        self.naam = naam
+        self.kans = kans
+        self.grote = grote
 
 
 def randomterrein(game):
@@ -63,10 +77,10 @@ def randomterrein(game):
     is_er_een_meer = int(random.triangular(0, 20))
     is_er_een_stad = int(random.triangular(0, 20))
     is_er_een_zee = int(random.triangular(0, 20))
-    print(game.weg_grote)
+    # print(game.weg_grote)
 
-    grote_zee = int(random.triangular(3, game.zee_grote * game.grootte + 3))
-    if is_er_een_zee < game.zee_kans + game.grootte / 2:
+    grote_zee = int(random.triangular(3, game.terein_instelingen[ZEE].grote * game.grootte + 3))
+    if is_er_een_zee < game.terein_instelingen[ZEE].kans + game.grootte / 2:
         for x in range (0, breedte + 1):
             for y in range (0, grote_zee):
                 ga_ik_zee_zetten = int(random.triangular(grote_zee - 2, grote_zee))
@@ -75,12 +89,12 @@ def randomterrein(game):
 
 
 
-    if is_er_een_meer < game.meer_kans + game.grootte:
+    if is_er_een_meer < game.terein_instelingen[MEER].kans + game.grootte:
         # aantal_bossen = int(random.triangular(1, game.groote * 2))
         # for i in range (0, aantal_bossen):
         xpos = int(random.triangular(0, breedte))
         ypos = int(random.triangular(0, hoogte))
-        grote_meer = int (random.triangular(0, game.meer_grote * 64 * game.grootte))
+        grote_meer = int (random.triangular(0, game.terein_instelingen[MEER].grote * 64 * game.grootte))
         for i in range(0, grote_meer):
             xpos += int(random.triangular(-20, 20) / 10)
             ypos += int(random.triangular(-20, 20) / 10)
@@ -98,14 +112,14 @@ def randomterrein(game):
 
 
 
-    if is_er_een_rivier < game.rivier_kans + game.grootte:
+    if is_er_een_rivier < game.terein_instelingen[RIVIER].kans + game.grootte:
         aantal_rivieren = int(random.triangular(1, game.grootte))
         while aantal_rivieren > 2:
             aantal_rivieren /= 2
             aantal_rivieren = int(aantal_rivieren)
             # print(aantal_rivieren)
         for i in range (0, aantal_rivieren):
-            grote_rivier = int(random.triangular(1, game.rivier_grote + game.grootte + 1))
+            grote_rivier = int(random.triangular(1, game.terein_instelingen[RIVIER].grote + game.grootte + 1))
             rirchting = int(random.triangular(0, 16))
             if rirchting < 8:
                 xpos = int(random.triangular(0, breedte))
@@ -132,7 +146,7 @@ def randomterrein(game):
                     # print(ypos, xpos)
                     for i in range (0, grote_rivier):
                         if xpos + i <= len(vlakterrein):
-                            vlakterrein[ypos + i][xpos] = 2
+                            vlakterrein[ypos + i][xpos] = 2############################
                     xpos += 1
                     ypos += int(random.triangular(-14, 14) / 10)
                     if ypos > hoogte - i:
@@ -167,13 +181,14 @@ def randomterrein(game):
 
 
 
-    if is_er_een_weg < game.weg_kans + game.grootte:
+    if is_er_een_weg < game.terein_instelingen[WEG].kans + game.grootte:
         aantal_wegen = int(random.triangular(1, game.grootte))
         while aantal_wegen > 2:
             aantal_wegen /= 2
             aantal_wegen = int(aantal_wegen)
         for i in range (0, aantal_wegen):
-            grote_weg = int(random.triangular(1, game.weg_grote + game.grootte + 1))
+            aantal_geleden_vorige_verspringing = 0
+            grote_weg = int(random.triangular(1, game.terein_instelingen[WEG].grote + game.grootte + 1))
             rirchting = int(random.triangular(0, 16))
             if is_er_een_zee < 1 + game.grootte / 2:
                 rirchting = 10
@@ -202,8 +217,9 @@ def randomterrein(game):
                                     vlakterrein[ypos][vorige_x + i] = 8
                                 else:
                                     vlakterrein[ypos][vorige_x + i] = 4
+                                aantal_geleden_vorige_verspringing = 0
                         if xpos + i <= len(vlakterrein):
-                            if vlakterrein[ypos][xpos + i] == 2:
+                            if vlakterrein[ypos][xpos + i] == 2:#######################################
                                 vlakterrein[ypos][xpos + i] = 5
                             elif vlakterrein[ypos][xpos + i] == 7:
                                 vlakterrein[ypos][xpos + i] = 8
@@ -211,7 +227,9 @@ def randomterrein(game):
                                 vlakterrein[ypos][xpos + i] = 4
                     ypos += 1
                     vorige_x = xpos
-                    xpos += int(random.triangular(-18, 18) / 10)
+                    if aantal_geleden_vorige_verspringing < 10:
+                        aantal_geleden_vorige_verspringing += 1
+                    xpos += int(random.triangular(-16, 16) / (20 - aantal_geleden_vorige_verspringing))
                     if xpos > breedte:
                         xpos = breedte
                     if xpos < 0:
@@ -226,6 +244,7 @@ def randomterrein(game):
                                 vlakterrein[vorige_y][xpos] = 8
                             else:
                                 vlakterrein[vorige_y][xpos] = 4
+                            aantal_geleden_vorige_verspringing = 0
                     if ypos + i <= len(vlakterrein):
                         if vlakterrein[ypos][xpos] == 2:
                             vlakterrein[ypos][xpos] = 5
@@ -235,23 +254,26 @@ def randomterrein(game):
                             vlakterrein[ypos][xpos] = 4
                     xpos += 1
                     vorige_y = ypos
-                    ypos += int(random.triangular(-14, 14) / 10)
+                    if aantal_geleden_vorige_verspringing < 10:
+                        aantal_geleden_vorige_verspringing += 1
+                    ypos += int(random.triangular(-14, 14) / (20 - aantal_geleden_vorige_verspringing))
                     if ypos > hoogte:
                         ypos = hoogte
                     if ypos < 0:
                         ypos = 0
 
 
-
-    if is_er_een_bos < game.bos_kans + game.grootte:
+    if is_er_een_bos < game.terein_instelingen[BOS].kans + game.grootte:
         aantal_bossen = int(random.triangular(1, game.grootte * 2))
         for i in range (0, aantal_bossen):
             xpos = int(random.triangular(0, breedte))
-            ypos = int(random.triangular(0, hoogte))
-            grote_bos = int (random.triangular(0, game.bos_grote * 32 * game.grootte))
+            ypos = int(random.triangular(-24, hoogte + 24))
+            grote_bos = int (random.triangular(0, game.terein_instelingen[BOS].grote * 32 * game.grootte))
             for i in range(0, grote_bos):
-                xpos += int(random.triangular(-20, 20) / 10)
-                ypos += int(random.triangular(-20, 20) / 10)
+                vorige_x = xpos
+                xpos += int(random.triangular(-17, 17) / 10)
+                if vorige_x == xpos:
+                    ypos += int(random.triangular(-20, 20) / 10)
                 if ypos > hoogte:
                     ypos = hoogte
                 if ypos < 0:
@@ -263,15 +285,53 @@ def randomterrein(game):
                 # print(ypos, xpos)
                 if vlakterrein[ypos][xpos] == 0:
                     vlakterrein[ypos][xpos] = 1
+                if xpos != 0:
+                    if vlakterrein[ypos][xpos-1] == 0:
+                        vlakterrein[ypos][xpos-1] = 1
+                if ypos != 0:
+                    if vlakterrein[ypos-1][xpos] == 0:
+                        vlakterrein[ypos-1][xpos] = 1
+                if xpos != breedte:
+                    if vlakterrein[ypos][xpos+1] == 0:
+                       vlakterrein[ypos][xpos+1] = 1
+                if ypos != breedte:
+                    if vlakterrein[ypos+1][xpos] == 0:
+                        vlakterrein[ypos+1][xpos] = 1
+        # for rij in vlakterrein:
+            # print(rij)
+        aantal_naast = 0
+        max_aantal_naast = 4
+        while max_aantal_naast >= 3:
+            for y, rij in enumerate(vlakterrein):
+                for x, tegel in enumerate(rij):
+                    if y != 0 and y != hoogte and x != 0 and x != breedte:
+                        if vlakterrein[y-1][x] == 1:
+                            aantal_naast += 1
+                        if vlakterrein[y][x-1] == 1:
+                            aantal_naast += 1
+                        if vlakterrein[y][x+1] == 1:
+                            aantal_naast += 1
+                        if vlakterrein[y+1][x] == 1:
+                            aantal_naast += 1
+                        if aantal_naast >= max_aantal_naast:
+                            if vlakterrein[y][x] == 0:
+                                print(vlakterrein[y][x])
+                                vlakterrein[y][x] = 1
+                                print(vlakterrein[y][x])
+                        aantal_naast = 0
+            max_aantal_naast -= 1
+        # print('')
+        # for rij in vlakterrein:
+        #     print(rij)
 
 
 
-    if is_er_een_berg < game.berg_kans + game.grootte:
+    if is_er_een_berg < game.terein_instelingen[BERG].kans + game.grootte:
         aantal_bergen = int(random.triangular(1, game.grootte * 2))
         for i in range (0, aantal_bergen):
             xpos = int(random.triangular(0, breedte))
             ypos = int(random.triangular(0, hoogte))
-            grote_berg = int(random.triangular(0, game.berg_grote * 16))
+            grote_berg = int(random.triangular(0, game.terein_instelingen[BERG].grote * 16))
             for i in range(0, grote_berg):
                 xpos += int(random.triangular(-20, 20) / 10)
                 ypos += int(random.triangular(-20, 20) / 10)
@@ -286,10 +346,43 @@ def randomterrein(game):
                 # print(ypos, xpos)
                 if vlakterrein[ypos][xpos] == 0:
                     vlakterrein[ypos][xpos] = 3
+                if xpos != 0:
+                    if vlakterrein[ypos][xpos-1] == 0:
+                        vlakterrein[ypos][xpos-1] = 3
+                if ypos != 0:
+                    if vlakterrein[ypos-1][xpos] == 0:
+                        vlakterrein[ypos-1][xpos] = 3
+                if xpos != breedte:
+                    if vlakterrein[ypos][xpos+1] == 0:
+                       vlakterrein[ypos][xpos+1] = 3
+                if ypos != breedte:
+                    if vlakterrein[ypos+1][xpos] == 0:
+                        vlakterrein[ypos+1][xpos] = 3
+
+        aantal_naast = 0
+        max_aantal_naast = 4
+        while max_aantal_naast >= 3:
+            for y, rij in enumerate(vlakterrein):
+                for x, tegel in enumerate(rij):
+                    if y != 0 and y != hoogte and x != 0 and x != breedte:
+                        if vlakterrein[y-1][x] == 3:
+                            aantal_naast += 1
+                        if vlakterrein[y][x-1] == 3:
+                            aantal_naast += 1
+                        if vlakterrein[y][x+1] == 3:
+                            aantal_naast += 1
+                        if vlakterrein[y+1][x] == 3:
+                            aantal_naast += 1
+                        if aantal_naast >= max_aantal_naast:
+                            if vlakterrein[y][x] == 0:
+                                # print(vlakterrein[y][x])
+                                vlakterrein[y][x] = 3
+                                # print(vlakterrein[y][x])
+                        aantal_naast = 0
+            max_aantal_naast -= 1
 
 
-
-    aantal_gebouwen = int(random.triangular(-10 + game.gebouw_aantal, game.grootte * 4))
+    aantal_gebouwen = int(random.triangular(-10 + game.terein_instelingen[GEBOUW].kans, game.grootte * 4))
     # print(aantal_gebouwen)
     for i in range(0, aantal_gebouwen):
         xpos = int(random.triangular(0, breedte))
@@ -310,7 +403,7 @@ def randomterrein(game):
             if vlakterrein[ypos][xpos] == 0:
                 vlakterrein[ypos][xpos] = 6
 
-    print('////')
+    # print('////')
     # for rij in vlakterrein:
     #     print(rij)
 

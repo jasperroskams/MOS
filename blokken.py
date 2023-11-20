@@ -15,6 +15,11 @@ class Blok():
         self.ben_ik_zichtbaar = False
         self.vorige_ben_ik_zichtbaar = False
         self.ben_ik_voledig_zichtbaar = False
+        self.u2 = 0
+        self.w2 = 0
+        self.x2 = 96
+        self.animatiesnelheid = 2
+
 
 
 
@@ -35,13 +40,23 @@ class Blok():
         self.h += 2 * self.verschil
         self.x -= self.verschil
         self.y -= self.verschil
-        # print(f"w{self.w} :h{self.h} :x{self.x} :y{self.y}")
+        # print(f"w{self.w} :h{self.h} :x{self.x} :y{self.y} :ver{self.verschil} : t{self.timer}")
+        self.timer += 1
         if self.w >= 16:
-            self.timer += 1
             self.verschil = 0
             if self.timer >= 100:
                 self.verschil = -1
-        if self.w <= 0:
+
+
+        pyxel.blt(self.x2, 96, 1, self.u2, 40, self.w2, 64, pyxel.COLOR_PURPLE)
+        if 110 <= self.timer <= 109 + 64 // self.animatiesnelheid:
+            self.w2 += self.animatiesnelheid
+        if 110 + (256 // self.animatiesnelheid) <= self.timer:# <= 110 + (128 // self.animatiesnelheid):
+            self.u2 += self.animatiesnelheid
+            self.w2 -= self.animatiesnelheid
+            self.x2 += self.animatiesnelheid
+
+        if self.timer >= 120 + 128 // self.animatiesnelheid + (109 + 64 // self.animatiesnelheid):
             self.verschil = 0
             game.aan_het_spelen = True
             if len(game.terrein) < 17:

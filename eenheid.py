@@ -524,26 +524,26 @@ class Eenheid():
                     # zwaard
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  10,   3,   6,  15,  18,   5,   1,  10,  10,   2,   5,   2,   0,   0,   7,   4],  # I
-                        [  15,   4,   7,  15,  18,   5,   1,  10,   8,   2,   5,   2,   0,   0,   9,   6],  # II
-                        [  35,   5,   8,  18,  21,   6,   1,  12,   8,   2,   5,   3,   0,   0,  10,   8],  # III
-                        [  45,   6,  10,  21,  24,   6,   1,  14,   8,   3,   5,   4,   0,   0,  12,  10],  # IV
+                        [  10,   3,   6,  15,  18,   5,   1,  12,  10,   1,   5,   2,   0,   0,   7,   4],  # I
+                        [  15,   4,   7,  15,  18,   5,   1,  16,   8,   1,   5,   2,   0,   0,   9,   6],  # II
+                        [  35,   5,   8,  18,  21,   6,   1,  20,   8,   2,   5,   3,   0,   0,  10,   8],  # III
+                        [  45,   6,  10,  21,  24,   6,   1,  22,   8,   2,   5,   4,   0,   0,  12,  10],  # IV
                     ],
                     # speer
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  15,   2,   5,  15,  18,   5,   1,   8,   8,   2,   4,   2,   0,   0,   5,   6],  #,  I
-                        [  25,   3,   6,  18,  18,   5,   1,   8,   8,   2,   4,   2,   0,   0,   7,   8],  # , II
-                        [  40,   3,   7,  18,  18,   5,   1,   8,   8,   2,   4,   3,   0,   0,   9,  10],  # I, II
-                        [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # , IV
+                        [  15,   2,   5,  15,  18,   5,   1,  10,   8,   1,   4,   2,   0,   0,   5,   6],  # I
+                        [  25,   3,   6,  18,  18,   5,   1,  14,   8,   1,   4,   2,   0,   0,   7,   8],  # II
+                        [  40,   3,   7,  18,  18,   5,   1,  16,   8,   2,   4,   3,   0,   0,   9,  10],  # III
+                        [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                     ],
                     # paard
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  10,   2,   5,  15,  18,  12,   1,  16,  12,   4,   4,   3,   0,   0,   8,   6],  # I
-                        [  15,   4,   6,  15,  18,  14,   1,  16,  10,   4,   4,   3,   0,   0,  10,   8],  # II
-                        [  30,   5,   8,  18,  18,  11,   1,  16,  10,   4,   4,   4,   0,   0,  12,  10],  # III
-                        [  40,   6,  10,  21,  21,  11,   1,  16,  10,   4,   4,   5,   0,   0,  14,  12],  # IV
+                        [  10,   2,   5,  15,  18,  12,   1,  18,  12,   2,   4,   3,   0,   0,   8,   6],  # I
+                        [  15,   4,   6,  15,  18,  14,   1,  22,  10,   2,   4,   3,   0,   0,  10,   8],  # II
+                        [  30,   5,   8,  18,  18,  11,   1,  24,  10,   3,   4,   4,   0,   0,  12,  10],  # III
+                        [  40,   6,  10,  21,  21,  11,   1,  28,  10,   3,   4,   5,   0,   0,  14,  12],  # IV
                     ],
                     # kanon
                     [
@@ -556,8 +556,8 @@ class Eenheid():
                     # boog
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  10,   2,   6,  15,  18,   8,   3,  10,  12,   3,   4,   2,   5,   0,   0,   2],  # I
-                        [  15,   3,   8,  15,  18,   8,   4,   8,  12,   3,   5,   3,   7,   0,   0,   4],  # II
+                        [  10,   2,   6,  15,  18,   8,   3,  12,  12,   1,   4,   2,   3,   0,   0,   2],  # I
+                        [  15,   3,   8,  15,  18,   8,   4,  16,  12,   2,   5,   3,   5,   0,   0,   4],  # II
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                     ],
@@ -575,48 +575,48 @@ class Eenheid():
                     # zwaard
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  25,   4,   3,  21,  18,   5,   2,  10,   8,   1,   4,   3,   2,   0,   5,   8],  # I
-                        [  35,   5,   4,  21,  18,   6,   2,  10,   8,   2,   4,   4,   2,   1,   7,  10],  # II
-                        [  45,   6,   4,  21,  21,   6,   3,  12,   8,   3,   4,   5,   2,   0,   8,  12],  # III
-                        [  55,   7,   5,  21,  21,   6,   3,  15,   8,   3,   4,   6,   2,   0,  10,  14],  # IV
+                        [  25,   4,   3,  21,  18,   5,   2,  14,   8,   1,   4,   3,   2,   0,   5,   6],  # I
+                        [  35,   5,   4,  21,  18,   6,   2,  18,   8,   2,   4,   4,   2,   1,   7,   8],  # II
+                        [  45,   6,   4,  21,  21,   6,   3,  22,   8,   2,   4,   5,   2,   0,   8,  10],  # III
+                        [  55,   7,   5,  21,  21,   6,   3,  26,   8,   2,   4,   6,   2,   0,  10,  12],  # IV
                     ],
                     # speer
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  30,   2,   2,  18,  18,   5,   1,   8,   8,   1,   4,   1,   0,   0,   1,   6],  # I
-                        [  40,   3,   3,  21,  18,   5,   1,  10,   8,   1,   4,   2,   0,   0,   2,   8],  # II
+                        [  30,   2,   2,  18,  18,   5,   1,  12,   8,   1,   4,   1,   0,   0,   1,   6],  # I
+                        [  40,   3,   3,  21,  18,   5,   1,  16,   8,   1,   4,   2,   0,   0,   2,   8],  # II
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                     ],
                     # paard
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  10,   2,   4,  15,  18,  11,   1,  16,  12,   4,   5,   3,   0,   0,   4,   0],  # I
-                        [  20,   4,   5,  15,  18,  11,   1,  15,  10,   3,   4,   3,   0,   0,   7,   0],  # II
-                        [  40,   6,   7,  18,  21,  10,   1,  15,  10,   3,   4,   4,   0,   0,   9,   0],  # III
-                        [  50,   8,   9,  21,  24,  10,   1,  15,  10,   4,   4,   5,   0,   0,  11,   0],  # IV
+                        [  10,   2,   4,  15,  18,  11,   1,  20,  12,   2,   5,   3,   0,   0,   4,   0],  # I
+                        [  20,   4,   5,  15,  18,  11,   1,  24,  10,   2,   4,   3,   0,   0,   7,   0],  # II
+                        [  40,   6,   7,  18,  21,  10,   1,  28,  10,   3,   4,   4,   0,   0,   9,   0],  # III
+                        [  50,   8,   9,  21,  24,  10,   1,  32,  10,   3,   4,   5,   0,   0,  11,   0],  # IV
                     ],
                     # kanon
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [   5,   3,   4,  15,  18,   4,   5,   6,   8,   1,   4,   2,   7,   0,   0,  30],  # I
-                        [  10,   6,   5,  15,  18,   3,   6,   6,   8,   2,   4,   3,   4,   0,   0,  30],  # II
+                        [   5,   3,   4,  15,  18,   4,   5,  12,   8,   1,   4,   2,   7,   0,   0,  30],  # I
+                        [  10,   6,   5,  15,  18,   3,   6,  16,   8,   1,   4,   3,   4,   0,   0,  30],  # II
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                     ],
                     # boog
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [   5,   3,   3,  15,  12,   7,   3,  10,  10,   3,   4,   1,   4,   0,   0,   2],  # I
-                        [  10,   5,   3,  15,  18,   5,   4,   8,   8,   1,   4,   3,   6,   0,   0,   4],  # II
+                        [   5,   3,   3,  15,  12,   7,   3,  12,  10,   1,   4,   1,   4,   0,   0,   2],  # I
+                        [  10,   5,   3,  15,  18,   5,   4,  16,   8,   1,   4,   3,   6,   0,   0,   4],  # II
                         [  25,   6,   4,  18,  21,   5,   5,   8,   8,   2,   4,   3,   6,   0,   0,   6],  # III
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                     ],
                     # hamer
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [   5,   1,   1,  12,  12,  12,   1,  10,   8,   3,   4,   1,   0,   1,   1,   1],  # I
-                        [   5,   1,   1,  12,  15,  14,   1,  10,   8,   3,   4,   1,   0,   1,   2,   2],  # II
+                        [   5,   1,   1,  12,  12,  12,   1,  12,   8,   1,   4,   1,   0,   1,   1,   1],  # I
+                        [   5,   1,   1,  12,  15,  14,   1,  16,   8,   2,   4,   1,   0,   1,   2,   2],  # II
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                     ]
@@ -626,40 +626,40 @@ class Eenheid():
                     # zwaard
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  20,   4,   3,  15,  12,   5,   1,   8,   8,   1,   4,   0,   0,   0,   0,   0],  # I
-                        [  25,   6,   4,  15,  15,   5,   1,   8,   8,   2,   4,   1,   0,   0,   0,   0],  # II
-                        [  40,   8,   6,  18,  18,   6,   1,  12,   8,   2,   4,   3,   0,   0,   0,   0],  # III
-                        [  50,   9,   6,  21,  21,   6,   1,  12,   8,   2,   4,   3,   0,   0,   0,   0],  # IV
+                        [  20,   4,   3,  15,  12,   5,   1,  10,   8,   1,   4,   0,   0,   0,   4,   5],  # I
+                        [  25,   6,   4,  15,  15,   5,   1,  14,   8,   2,   4,   1,   0,   0,   6,   6],  # II
+                        [  40,   5,   8,  18,  21,   6,   1,  22,   8,   2,   5,   3,   0,   0,  11,   8],  # III
+                        [  50,   9,   6,  21,  21,   6,   1,  22,   8,   2,   4,   3,   0,   0,  12,  12],  # IV
                     ],
                     # speer
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  35,   3,   3,  15,  15,   4,   1,   6,   8,   1,   3,   1,   0,   0,   0,   0],  # I
-                        [  45,   5,   4,  18,  18,   5,   1,   8,   8,   2,   3,   2,   0,   0,   0,   0],  # II
-                        [  55,   6,   5,  21,  21,   6,   1,   8,   8,   3,   3,   3,   0,   0,   0,   0],  # III
+                        [  35,   3,   3,  15,  15,   4,   1,  12,   8,   1,   3,   1,   0,   0,   3,   8],  # I
+                        [  45,   5,   4,  18,  18,   5,   1,  14,   8,   2,   3,   2,   0,   0,   5,  10],  # II
+                        [  55,   6,   5,  21,  21,   6,   1,  16,   8,   2,   3,   3,   0,   0,   7,  14],  # III
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                     ],
                     # paard
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  10,   4,   4,  15,  12,  12,   4,  16,  12,   4,   4,   2,   5,   0,   0,   0],  # I
-                        [  20,   6,   4,  15,  15,  12,   1,  15,  10,   4,   4,   2,   0,   0,   0,   0],  # II
-                        [  55,   6,  14,  18,  18,   7,   1,  15,  10,   3,   4,   0,   0,   0,   0,   0],  # III
-                        [  70,   8,  16,  21,  18,   7,   1,  15,  10,   3,   4,   1,   0,   0,   0,   0],  # IV
+                        [  10,   4,   4,  15,  15,  12,   4,  16,  12,   4,   4,   2,   5,   0,   0,   0],  # I
+                        [  20,   6,   4,  15,  18,  12,   1,  15,  10,   4,   4,   2,   0,   0,   0,   0],  # II
+                        [  55,   6,  14,  18,  14,   7,   1,  15,  10,   3,   4,   0,   0,   0,  16,  14],  # III
+                        [  70,   8,  16,  21,  18,   7,   1,  15,  10,   3,   4,   1,   0,   0,  20,  16],  # IV
                     ],
                     # kanon
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  10,   4,   4,  15,  12,   3,   4,   6,   8,   1,   3,   0,   5,   0,   0,   0],  # I
-                        [  15,   5,   4,  15,  15,   3,   5,   6,   8,   2,   3,   1,   6,   0,   0,   0],  # II
+                        [  10,   4,   4,  15,  12,   3,   4,   9,   8,   1,   3,   0,   5,   0,   0,   0],  # I
+                        [  15,   5,   4,  15,  15,   3,   5,   9,   8,   2,   3,   1,   6,   0,   0,   0],  # II
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                     ],
                     # boog
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  10,   3,   3,  15,  12,   6,   3,   10,  9,   2,   4,   1,   4,   0,   0,   0],  # I
-                        [  20,   7,   4,  21,  18,   6,   4,   8,   8,   2,   3,   2,   7,   0,   0,   0],  # II
+                        [  10,   3,   3,  15,  12,   6,   3,  10,   9,   2,   4,   1,   4,   0,   0,   0],  # I
+                        [  20,   7,   4,  21,  18,   6,   4,  16,   8,   2,   3,   2,   7,   0,   0,   0],  # II
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                     ],
@@ -685,8 +685,8 @@ class Eenheid():
                     # speer
                     [
                         # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                        [  40,   3,   5,  18,  21,   4,   1,   6,   8,   1,   4,   4,   0,   0,   0,   0],  # I
-                        [  60,   5,   6,  21,  24,   4,   1,   8,   8,   2,   4,   6,   0,   0,   0,   0],  # II
+                        [  30,   3,   5,  18,  21,   4,   1,   6,   8,   1,   4,   4,   0,   0,   0,   0],  # I
+                        [  40,   5,   6,  21,  24,   4,   1,   8,   8,   2,   4,   6,   0,   0,   0,   0],  # II
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
                         [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                     ],
@@ -1039,7 +1039,7 @@ class Eenheid():
             [
                 # zwaard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  30,   4,   6,  30,  24,    5,   4,   8,   8,   1,   4,   1,   5],  # I
                     [  40,   6,   8,  30,  30,    5,   5,   8,   9,   2,   4,   1,   5],  # II
                     [  50,   8,   8,  36,  36,    6,   5,  12,   9,   2,   4,   2,   6],  # III
@@ -1047,7 +1047,7 @@ class Eenheid():
                 ],
                 # speer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  50,   2,   6,  36,  36,   5,   1,   6,   8,  1,   4,   2,   0],  # I
                     [  60,   4,   6,  36,  36,   5,   1,   8,   8,  2,   4,   2,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0],  # III
@@ -1055,7 +1055,7 @@ class Eenheid():
                 ],
                 # paard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  40,   5,  10,  30,  24,  12,   3,  16,  12,   4,   5,   2,   4],  # I
                     [  55,   6,  10,  30,  30,  12,   5,  15,  10,   4,   4,   3,   5],  # II
                     [  65,   8,  10,  36,  36,  10,   5,  15,  10,   5,   4,   3,   6],  # III
@@ -1063,7 +1063,7 @@ class Eenheid():
                 ],
                 # kanon
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  15,   5,   8,  30,  24,   4,   8,   6,   8,  1,   3,   0,   8],  # I
                     [  25,   8,   8,  30,  30,   4,  10,   6,   8,  2,   3,   1,   8],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0],  # III
@@ -1071,7 +1071,7 @@ class Eenheid():
                 ],
                 # boog
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  25,   4,   6,  30,  24,   6,   6,   8,  10,  2,   4,   0,   7],  # I
                     [  30,   6,   6,  30,  30,   5,   7,   8,  11,  2,   5,   1,   7],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0],  # III
@@ -1079,7 +1079,7 @@ class Eenheid():
                 ],
                 # hamer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  10,   1,   2,  24,  24,  12,   1,  10,   8,   3,   4,   0,   0],  # I
                     [  15,   2,   2,  24,  30,  14,   1,  10,   8,   3,   4,   0,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1090,7 +1090,7 @@ class Eenheid():
             [
                 # zwaard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  40,   5,   6,  30,  30,   5,   4,   8,   8,  1,   4,   1,   5],  # I
                     [  45,   6,   6,  30,  36,   5,   4,  10,   9,  2,   4,   1,   5],  # II
                     [  50,   7,   8,  36,  36,   6,   5,  12,   9,  2,   4,   2,   6],  # III
@@ -1098,7 +1098,7 @@ class Eenheid():
                 ],
                 # speer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  50,   2,   1,  42,  42,   5,   1,   8,   8,   1,   3,   1,   0],  # I
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1106,7 +1106,7 @@ class Eenheid():
                 ],
                 # paard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   3,   3,  24,  24,  10,   1,  12,  10,   4,   4,   1,   0],  # I
                     [  30,   4,   4,  30,  30,  10,   3,  10,   8,   3,   3,   2,   2],  # II
                     [  45,   6,   4,  36,  36,   8,   4,  12,   8,   4,   3,   2,   3],  # III
@@ -1114,7 +1114,7 @@ class Eenheid():
                 ],
                 # kanon
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   6,   4,  30,  24,   5,  10,   6,   9,   2,   4,   1,   7],  # I
                     [  30,   7,   4,  30,  24,   6,  12,   6,  10,   2,   4,   2,   7],  # II
                     [  40,   9,   4,  36,  30,   7,  14,   8,  12,   2,   4,   3,   8],  # III
@@ -1122,7 +1122,7 @@ class Eenheid():
                 ],
                 # boog
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  30,   4,   2,  30,  24,   6,   6,  10,   9,   3,   4,   1,   6],  # I
                     [  35,   5,   2,  30,  30,   5,   8,   8,  10,   2,   5,   2,   7],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1130,7 +1130,7 @@ class Eenheid():
                 ],
                 # hamer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  10,   2,   2,  30,  18,   8,   1,  12,   8,   2,   4,   0,   0],  # I
                     [  15,   3,   2,  30,  24,   10,  1,  14,   8,   3,   4,   0,   0],  # II
                     [   9,   4,   3,  36,  30,   12,  1,  16,   8,   3,   4,   0,   0],  # III
@@ -1141,7 +1141,7 @@ class Eenheid():
             [
                 # zwaard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  40,   6,   3,  36,  30,   5,   5,   8,   9,   2,   4,   2,   8],  # I
                     [  50,   7,   4,  42,  36,   6,   5,  10,   9,   2,   4,   2,   8],  # II
                     [  60,   8,   4,  42,  42,   6,   6,  12,  10,   2,   5,   3,   9],  # III
@@ -1149,7 +1149,7 @@ class Eenheid():
                 ],
                 # speer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  45,   2,   2,  30,  24,   4,   1,   6,   8,   1,   3,   1,   0],  # I
                     [  50,   3,   2,  30,  30,   5,   1,   8,   8,   2,   4,   1,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1157,7 +1157,7 @@ class Eenheid():
                 ],
                 # paard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  30,   3,   3,  24,  24,  10,   1,  12,  10,   4 ,  4,   1,   0],  # I
                     [  35,   4,   3,  30,  30,  10,   1,  10,   9,   3 ,  4,   1,   0],  # II
                     [  40,   6,   4,  36,  30,   8,   4,  12,   9,   3 ,  4,   2,   3],  # III
@@ -1165,7 +1165,7 @@ class Eenheid():
                 ],
                 # kanon
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  10,   5,   6,  30,  18,   3,   9,   6,   9,   2,   3,   1,   6],  # I
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1173,7 +1173,7 @@ class Eenheid():
                 ],
                 # boog
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   3,   2,  24,  24,   8,   6,   8,   9,   2,   4,   0,   6],  # I
                     [  30,   5,   2,  30,  30,   5,   6,   8,  10,   2,   4,   1,   7],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1181,7 +1181,7 @@ class Eenheid():
                 ],
                 # hamer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   1,   1,  24,  24,   8,   1,  10,   8,   2,   4,   0,   0],  # I
                     [  10,   2,   1,  24,  30,   8,   1,  10,   8,   3,   4,   0,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1192,7 +1192,7 @@ class Eenheid():
             [
                 # zwaard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  30,   5,   2,  30,  24,   5,   4,   6,   8,   1,   4,   2,   6],  # I
                     [  40,   6,   3,  30,  30,   5,   4,   8,   9,   2,   4,   2,   7],  # II
                     [  45,   7,   3,  36,  36,   6,   5,  10,   9,   2,   4,   3,   7],  # III
@@ -1200,7 +1200,7 @@ class Eenheid():
                 ],
                 # speer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  40,   2,   3,  30,  24,   4,   1,   6,   8,   1,   3,   1,   0],  # I
                     [  50,   3,   3,  36,  36,   5,   1,   8,   8,   2,   4,   2,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1208,7 +1208,7 @@ class Eenheid():
                 ],
                 # paard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  25,   3,   3,  24,  24,  10,   1,  12,  15,   4,   4,   2,   0],  # I
                     [  30,   5,   3,  30,  30,  10,   4,  10,   9,   3,   4,   2,   1],  # II
                     [  40,   6,   4,  36,  36,   8,   5,  10,   9,   3,   4,   3,   5],  # III
@@ -1216,7 +1216,7 @@ class Eenheid():
                 ],
                 # kanon
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  10,   6,   4,  30,  18,   4,   8,   6,   9,   2,   4,   1,   6],  # I
                     [  20,   8,   4,  30,  24,   4,  10,   6,   9,   2,   4,   2,   6],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1224,7 +1224,7 @@ class Eenheid():
                 ],
                 # boog
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  30,   4,   3,  30,  24,   7,   8,  10,  10,   3,   4,   2,   7],  # I
                     [  40,   6,   3,  30,  30,   5,  10,   8,  11,   2,   5,   2,   8],  # II
                     [  50,   8,   4,  36,  36,   6,  13,  10,  12,   3,   6,   3,   9],  # III
@@ -1232,7 +1232,7 @@ class Eenheid():
                 ],
                 # hamer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   1,   1,  24,  18,   8,   1,  10,   8,   3,   4,   0,   0],  # I
                     [  10,   2,   1,  24,  18,  10,   1,  10,   8,   3,   4,   0,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1243,7 +1243,7 @@ class Eenheid():
             [
                 # zwaard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   3,   2,  24,  24,   5,   4,    6,   8,   1,   3,   1,   4],  # I
                     [  30,   4,   2,  30,  30,   5,   4,    8,   8,   2,   4,   1,   4],  # II
                     [  40,   5,   3,  36,  36,   6,   5,   10,   8,   2,   4,   2,   5],  # III
@@ -1251,7 +1251,7 @@ class Eenheid():
                 ],
                 # speer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  45,   4,   3,  36,  42,   5,   4,   8,   8,   2,   4,   2,   6],  # I
                     [  55,   6,   4,  42,  48,   6,   4,  10,   8,   2,   4,   2,   7],  # II
                     [  65,   8,   5,  48,  54,   6,   4,  12,   8,   3,   5,   3,   8],  # III
@@ -1259,7 +1259,7 @@ class Eenheid():
                 ],
                 # paard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   3,   3,  24,  24,  12,   5,  10,  10,   3,   4,   1,   2],  # I
                     [  30,   5,   4,  30,  30,  10,   4,   8,   8,   3,   4,   2,   3],  # II
                     [  40,   8,   4,  36,  36,   8,   4,  12,   8,   4,   4,   2,   4],  # III
@@ -1267,7 +1267,7 @@ class Eenheid():
                 ],
                 # kanon
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   5,   5,  24,  21,   6,   8,   6,   8,   2,   3,   1,   7],  # I
                     [  30,   7,   6,  27,  24,   6,  10,   6,   8,   2,   3,   2,   9],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1275,7 +1275,7 @@ class Eenheid():
                 ],
                 # boog
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   4,   2,  30,  24,   6,   5,   6,   9,   3,   4,   1,   6],  # I
                     [  25,   6,   2,  30,  30,   5,   7,   8,  10,   2,   5,   2,   7],  # II
                     [  30,   8,   2,  36,  36,   6,  10,   9,  11,   2,   5,   3,   8],  # III
@@ -1283,7 +1283,7 @@ class Eenheid():
                 ],
                 # hamer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  10,   1,   1,  24,  24,  10,   1,  10,   8,   3,   4,   0,   0],  # I
                     [  15,   3,   1,  30,  30,  10,   1,  10,   8,   3,   4,   0,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1296,7 +1296,7 @@ class Eenheid():
             [
                 # zwaard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   6,   6,  30,  24,   6,   5,   9,  11,   2,   3,   3,   6],  # I
                     [  25,   8,   7,  36,  27,   6,   6,  10,  11,   2,   3,   3,   6],  # II
                     [  30,  10,   8,  42,  30,   7,   6,  12,  11,   2,   4,   4,   7],  # III
@@ -1304,7 +1304,7 @@ class Eenheid():
                 ],
                 # speer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  30,   4,   3,  36,  30,   5,   5,   6,  12,   2,   3,   4,   5],  # I
                     [  40,   5,   4,  39,  33,   5,   5,   8,  12,   2,   3,   5,   6],  # II
                     [  50,   6,   5,  42,  36,   6,   6,  10,  12,   3,   3,   6,   7],  # III
@@ -1312,7 +1312,7 @@ class Eenheid():
                 ],
                 # paard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  45,   8,   6,  39,  12,  14,   5,  16,  12,   4,   2,   4,   7],  # I
                     [  65,  10,   8,  45,  15,  12,   8,  15,  10,   4,   2,   5,   6],  # II
                     [  80,  12,  10,  51,  18,   8,  11,  15,  10,   4,   2,   6,   6],  # III
@@ -1320,7 +1320,7 @@ class Eenheid():
                 ],
                 # kanon
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  10,   6,   7,  30,  24,   5,  12,   8,  10,   2,   3,   3,   6],  # I
                     [  15,   8,   8,  33,  27,   5,  13,   8,  10,   2,   3,   3,   8],  # II
                     [  20,  10,   9,  36,  30,   6,  15,  10,  10,   3,   3,   4,  10],  # III
@@ -1328,7 +1328,7 @@ class Eenheid():
                 ],
                 # boog
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   6,   4,  24,  21,   8,   7,   8,  14,   3,   4,   2,   7],  # I
                     [  30,   7,   5,  27,  24,   8,   8,   8,  16,   3,   5,   3,   9],  # II
                     [  40,   8,   6,  30,  27,   8,  10,  10,  18,   3,   6,   4,   9],  # III
@@ -1336,7 +1336,7 @@ class Eenheid():
                 ],
                 # hamer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   1,   1,  12,  12,  12,   1,  10,   8,   3,   4,   0,   0],  # I
                     [  10,   1,   1,  12,  15,  14,   1,  10,   8,   3,   4,   0,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1347,7 +1347,7 @@ class Eenheid():
             [
                 # zwaard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  15,   3,   1,  18,  18,   5,   2,   9,   8,   1,   4,   2,   2],  # I
                     [  25,   5,   2,  18,  18,   6,   3,  10,   8,   2,   4,   4,   2],  # II
                     [  30,   7,   2,  18,  21,   6,   4,  12,   8,   3,   4,   5,   3],  # III
@@ -1355,7 +1355,7 @@ class Eenheid():
                 ],
                 # speer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   2,   2,  18,  18,   4,   1,   6,   8,   1,   4,   1,   0],  # I
                     [  30,   3,   3,  18,  18,   5,   1,   8,   8,   1,   4,   2,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1363,7 +1363,7 @@ class Eenheid():
                 ],
                 # paard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  10,   2,   2,  15,  15,  11,   1,  16,  12,   4,   5,   3,   0],  # I
                     [  15,   4,   3,  15,  18,  11,   1,  15,  10,   3,   4,   3,   0],  # II
                     [  20,   6,   3,  18,  21,  10,   1,  15,  10,   3,   4,   4,   0],  # III
@@ -1371,7 +1371,7 @@ class Eenheid():
                 ],
                 # kanon
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   4,   2,  15,  12,   3,   5,   6,   8,   1,   4,   2,   5],  # I
                     [  10,   6,   3,  15,  15,   3,   7,   6,   8,   2,   4,   3,   6],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1379,7 +1379,7 @@ class Eenheid():
                 ],
                 # boog
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   2,   2,  15,  12,   6,   2,  10,   9,   2,   4,   2,   4],  # I
                     [  10,   4,   2,  15,  15,   5,   4,   8,   8,   1,   4,   3,   8],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1387,7 +1387,7 @@ class Eenheid():
                 ],
                 # hamer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   1,   1,  12,  12,  12,   1,  10,   8,   3,   4,   1,   0],  # I
                     [   5,   1,   1,  12,  15,  14,   1,  10,   8,   3,   4,   1,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1398,7 +1398,7 @@ class Eenheid():
             [
                 # zwaard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   4,   2,  15,  12,   4,   1,   8,   8,   1,   4,   0,   0],  # I
                     [  25,   6,   3,  15,  15,   5,   1,   8,   8,   2,   4,   1,   0],  # II
                     [  30,   8,   3,  18,  18,   6,   1,  12,   8,   2,   4,   2,   0],  # III
@@ -1406,7 +1406,7 @@ class Eenheid():
                 ],
                 # speer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   3,   3,  15,  15,   4,   1,   6,   8,   1,   4,   1,   0],  # I
                     [  30,   5,   3,  18,  18,   5,   1,   8,   8,   1,   4,   2,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1414,7 +1414,7 @@ class Eenheid():
                 ],
                 # paard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   4,   4,  15,  12,  12,   1,  16,  12,   4,   4,   2,   0],  # I
                     [  30,   6,   4,  15,  15,  12,   1,  15,  10,   4,   4,   2,   0],  # II
                     [  35,   8,   4,  18,  18,  10,   1,  15,  10,   5,   4,   3,   0],  # III
@@ -1422,7 +1422,7 @@ class Eenheid():
                 ],
                 # kanon
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  10,   5,   4,  15,  12,   3,   7,   6,   8,   1,   4,   0,   6],  # I
                     [  15,   7,   4,  15,  15,   3,   9,   6,   8,   2,   4,   1,   6],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1430,7 +1430,7 @@ class Eenheid():
                 ],
                 # boog
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  10,   3,   2,  15,  12,   6,   3,  10,   9,   2,   4,   1,   4],  # I
                     [  15,   5,   2,  15,  15,   5,   5,   8,   8,   1,   4,   1,   8],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1438,7 +1438,7 @@ class Eenheid():
                 ],
                 # hamer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   1,   1,  12,  12,  12,   1,  10,   8,   3,   4,   0,   0],  # I
                     [  10,   2,   1,  12,  15,  14,   1,  10,   8,   3,   4,   0,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1449,7 +1449,7 @@ class Eenheid():
             [
                 # zwaard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   4,   2,  15,  12,   4,   1,   8,   8,   1,   4,   0,   0],  # I
                     [  25,   6,   3,  15,  15,   5,   1,   8,   8,   2,   4,   1,   0],  # II
                     [  30,   8,   3,  18,  18,   6,   1,  12,   8,   2,   4,   2,   0],  # III
@@ -1457,7 +1457,7 @@ class Eenheid():
                 ],
                 # speer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  25,   3,   3,  15,  15,   4,   1,   6,   8,   1,   4,   1,   0],  # I
                     [  30,   5,   3,  18,  18,   5,   1,   8,   8,   1,   4,   2,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1465,7 +1465,7 @@ class Eenheid():
                 ],
                 # paard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  15,   4,   4,  15,  12,  12,   1,  16,  12,   4,   4,   2,   0],  # I
                     [  25,   6,   4,  15,  15,  12,   1,  15,  10,   4,   4,   2,   0],  # II
                     [  30,   8,   4,  18,  18,  10,   1,  15,  10,   5,   4,   3,   0],  # III
@@ -1473,7 +1473,7 @@ class Eenheid():
                 ],
                 # kanon
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   5,   4,  15,  12,   3,   7,   6,   8,   1,   4,   0,   6],  # I
                     [  10,   7,   4,  15,  15,   3,   9,   6,   8,   2,   4,   1,   6],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1481,7 +1481,7 @@ class Eenheid():
                 ],
                 # boog
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   3,   2,  15,  12,   6,   3,  10,   9,   2,   4,   1,   4],  # I
                     [  10,   5,   2,  15,  15,   5,   5,   8,   8,   1,   4,   1,   8],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1489,7 +1489,7 @@ class Eenheid():
                 ],
                 # hamer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   1,   1,  12,  12,  12,   1,  10,   8,   3,   4,   0,   0],  # I
                     [  10,   2,   1,  12,  15,  14,   1,  10,   8,   3,   4,   0,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1500,7 +1500,7 @@ class Eenheid():
             [
                 # zwaard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  15,   4,   2,  15,  12,   4,   1,   8,   8,   1,   4,   0,   0],  # I
                     [  20,   6,   3,  15,  15,   5,   1,   8,   8,   2,   4,   1,   0],  # II
                     [  25,   8,   3,  18,  18,   6,   1,  12,   8,   2,   4,   2,   0],  # III
@@ -1508,7 +1508,7 @@ class Eenheid():
                 ],
                 # speer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  20,   3,   3,  15,  15,   4,   1,   6,   8,   1,   4,   1,   0],  # I
                     [  30,   5,   3,  18,  18,   5,   1,   8,   8,   1,   4,   2,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1516,7 +1516,7 @@ class Eenheid():
                 ],
                 # paard
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [  10,   4,   4,  15,  12,  12,   1,  16,  12,   4,   4,   2,   0],  # I
                     [  20,   6,   4,  15,  15,  12,   1,  15,  10,   4,   4,   2,   0],  # II
                     [  25,   8,   4,  18,  18,  10,   1,  15,  10,   5,   4,   3,   0],  # III
@@ -1524,7 +1524,7 @@ class Eenheid():
                 ],
                 # kanon
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   5,   4,  15,  12,   3,   7,   6,   8,   1,   4,   0,   6],  # I
                     [  10,   7,   4,  15,  15,   3,   9,   6,   8,   2,   4,   1,   6],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1532,7 +1532,7 @@ class Eenheid():
                 ],
                 # boog
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   3,   2,  15,  12,   6,   3,   10,   9,   2,   4,   1,   4],  # I
                     [  10,   5,   2,  15,  15,   5,   5,   8,   8,   1,   4,   1,   8],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1540,7 +1540,7 @@ class Eenheid():
                 ],
                 # hamer
                 [
-                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  baa  mve  mun
+                    # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
                     [   5,   1,   1,  12,  12,  12,   1,  10,   8,   3,   4,   0,   0],  # I
                     [  10,   2,   1,  12,  15,  14,   1,  10,   8,   3,   4,   0,   0],  # II
                     [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
@@ -1659,6 +1659,7 @@ class Eenheid():
                 self.moraal_verdedigen = eenheid[MORAAL_VERDEDIGEN] * 10
                 self.munitie = 0
             self.begin_bereik = 1
+            self.bereik = 1
 
 
 
@@ -1721,8 +1722,8 @@ class Eenheid():
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == BERG:
-            self.verdedigen = self.begin_verdedigen + 5
-            if self.bereik > 2:
+            self.verdedigen = self.begin_verdedigen + 15
+            if self.bereik >= 2:
                 self.bereik = self.begin_bereik + 2
             self.zicht = self.begin_zicht + 4
             self.zichtbaar = self.begin_zichtbaar - 2
