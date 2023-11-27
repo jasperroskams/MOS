@@ -689,8 +689,8 @@ class Game():
                             dode_y = 0
 
                             for eenheid in kleur:
-                                eenheid.x = dode_x
-                                eenheid.y = dode_y
+                                eenheid.cordinaten.x = dode_x
+                                eenheid.cordinaten.y = dode_y
                                 pyxel.text(dode_x + 16 + self.begin_teken_x * 16, dode_y + self.begin_teken_y * 16, str(int(eenheid.schade_gekregen)), self.lijst_met_eenheidkleuren[eenheid.kleur])
                                 pyxel.text(dode_x + 16 + self.begin_teken_x * 16, dode_y + 8 + self.begin_teken_y * 16, str(int(eenheid.schade_gedaan)), self.lijst_met_eenheidkleuren[eenheid.kleur])
                                 pyxel.text(dode_x + 32 + self.begin_teken_x * 16, dode_y + self.begin_teken_y * 16, str(int(eenheid.eenheden_gedood)), self.lijst_met_eenheidkleuren[eenheid.kleur])
@@ -702,8 +702,8 @@ class Game():
                                     dode_x += 48
                         for kleur in self.eenheiden:
                             for eenheid in kleur:
-                                eenheid.x = dode_x
-                                eenheid.y = dode_y
+                                eenheid.cordinaten.x = dode_x
+                                eenheid.cordinaten.y = dode_y
                                 pyxel.text(dode_x + 16 + self.begin_teken_x * 16, dode_y + self.begin_teken_y * 16, str(int(eenheid.schade_gekregen)), self.lijst_met_eenheidkleuren[eenheid.kleur])
                                 pyxel.text(dode_x + 16 + self.begin_teken_x * 16, dode_y + 8 + self.begin_teken_y * 16, str(int(eenheid.schade_gedaan)), self.lijst_met_eenheidkleuren[eenheid.kleur])
                                 pyxel.text(dode_x + 32 + self.begin_teken_x * 16, dode_y + self.begin_teken_y * 16, str(int(eenheid.eenheden_gedood)), self.lijst_met_eenheidkleuren[eenheid.kleur])
@@ -1106,4 +1106,8 @@ class Game():
 
     def run(self):
         pyxel.run(self.update, self.draw)
+
+    @staticmethod
+    def get_zoom_factor():
+        return 7 or 16
 

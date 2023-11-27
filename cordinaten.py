@@ -1,19 +1,12 @@
+from game import Game
 
 
 
-
-class Cordinaaten():
+class GameCoordinaat():
+    """Converteert muis x en y naar game coordinaat (tegel index)"""
     def __init__(self, x, y):
-        self.x = x
-        self.y = y
-        self.x_16 = self.x // 16
-        self.y_16 = self.x // 16
-        self.x_7 = self.x // 7
-        self.y_7 = self.x // 7
+        z = Game.get_zoom_factor()
+        self.x = x // z
+        self.y = y // z
 
-    def update(self):
-        self.x_16 = self.x // 16
-        self.y_16 = self.x // 16
-        self.x_7 = self.x // 7
-        self.y_7 = self.x // 7
 

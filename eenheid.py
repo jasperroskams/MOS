@@ -1580,6 +1580,7 @@ class Eenheid():
         self.cordinaten = Cordinaaten(x, y)
         # self.x = x
         # self.y = y
+        self.orginele_eenheid = self.welk_type
         if Boot == False:
             self.boot = 1
         else:
