@@ -1,6 +1,6 @@
 import math
 import random
-
+from cordinaten import Cordinaaten
 import pyxel
 from terrein import testerrein, getTerrein
 ondergrond_impact = [2, 3, 5, 3, 1, 1, 2]
@@ -1577,8 +1577,9 @@ class Eenheid():
         self.kleur = kleur
         self.welk_type = welk_type
         self.nivo = nivo
-        self.x = x
-        self.y = y
+        self.cordinaten = Cordinaaten(x, y)
+        # self.x = x
+        # self.y = y
         if Boot == False:
             self.boot = 1
         else:
@@ -1608,8 +1609,8 @@ class Eenheid():
         self.moraal = self.begin_moraal
         self.bewegen = self.start_bewegen
         self.bereik = self.begin_bereik
-        self.vorig_x = self.x
-        self.vorig_y = self.y
+        self.vorig_x = self.cordinaten.x
+        self.vorig_y = self.cordinaten.y
         self.verschil = 0
         self.is_geweest = False
         self.is_geselecteerd = False
@@ -1658,8 +1659,8 @@ class Eenheid():
 
     def update(self, game):
         self.terrein = getTerrein()
-        xverschil = abs(self.vorig_x - self.x)
-        yverschil = abs(self.vorig_y - self.y)
+        xverschil = abs(self.vorig_x - self.cordinaten.x)
+        yverschil = abs(self.vorig_y - self.cordinaten.y)
         verschil = xverschil + yverschil
         if self.munitie <= 0:
             if self.welk_type == 3 or self.welk_type == 4:
@@ -1705,69 +1706,70 @@ class Eenheid():
 
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             if verschil > self.bewegen * 8:
-                self.x = self.vorig_x
-                self.y = self.vorig_y
+                self.cordinaten.x = self.vorig_x
+                self.cordinaten.y = self.vorig_y
         # print(self.gezondijd , self.MORAAL)
-        self.xverschil = abs(game.aangepaste_x - self.x)
-        self.yverschil = abs(game.aangepaste_y - self.y)
+        self.xverschil = abs(game.aangepaste_x - self.cordinaten.x)
+        self.yverschil = abs(game.aangepaste_y - self.cordinaten.y)
         self.verschil = self.xverschil + self.yverschil
-        self.vorig_x = self.x
-        self.vorig_y = self.y
+        self.vorig_x = self.cordinaten.x
+        self.vorig_y = self.cordinaten.y
+        self.cordinaten.update()
         self.vlakterrein = getTerrein()
-        ondergrond = getTerrein()[int(self.y / 16)][int(self.x / 16)]
+        ondergrond = getTerrein()[self.cordinaten.y_16][self.cordinaten.x_16]
 
         if self.uithouding <= 0:
             self.is_geweest = True
 
         if ondergrond == GRAS:
-            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
+            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.bereik = self.begin_bereik
-            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
-            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
+            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == BOS:
             if self.bereik > 3:
                 self.bereik = self.begin_bereik - 2
-            self.zichtbaar = self.begin_zichtbaar + 3 + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
-            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
-            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zichtbaar = self.begin_zichtbaar + 3 + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
+            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
+            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == WATER:
-            self.verdedigen = self.begin_verdedigen - 20 + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
+            self.verdedigen = self.begin_verdedigen - 20 + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.bereik = self.begin_bereik
-            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
-            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
+            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == BERG:
-            self.verdedigen = self.begin_verdedigen + 15 + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
+            self.verdedigen = self.begin_verdedigen + 15 + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             if self.bereik >= 2:
                 self.bereik = self.begin_bereik + 2
-            self.zicht = self.begin_zicht + 4 + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
-            self.zichtbaar = self.begin_zichtbaar - 2 + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zicht = self.begin_zicht + 4 + bouwsels_efect[ZICHT][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
+            self.zichtbaar = self.begin_zichtbaar - 2 + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == WEG:
-            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
+            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.bereik = self.begin_bereik
-            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
-            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
+            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == BRUG:
-            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
+            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.bereik = self.begin_bereik
-            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
-            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
+            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == GEBOUW:
-            self.verdedigen = self.begin_verdedigen + 5 + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
+            self.verdedigen = self.begin_verdedigen + 5 + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.bereik = self.begin_bereik
-            self.zichtbaar = self.begin_zichtbaar + 2 + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
-            self.zicht = self.begin_zicht - 1 + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zichtbaar = self.begin_zichtbaar + 2 + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
+            self.zicht = self.begin_zicht - 1 + bouwsels_efect[ZICHT][game.bouwsels[self.cordinaten.y_16][self.cordinaten.x_16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == MUUR:
@@ -1800,23 +1802,23 @@ class Eenheid():
             if self.boot == 0:
                 if not is_voorbeeld:
                     if game.lijst_met_terijnblokken[(self.y + extra_y) // 16][(self.x + extra_x) // 16].ben_ik_zichtbaar == True:
-                        pyxel.rect(self.x + extra_x, self.y + extra_y, 15, 15, 6)
+                        pyxel.rect(self.cordinaten.x + extra_x, self.cordinaten.y + extra_y, 15, 15, 6)
             if self.is_zichtbaar:
                 if self.boot == 1:
-                    pyxel.blt(self.x   + extra_x, self.y      + extra_y, 0, self.nivo * 16     , self.kleur * 16 + 80, 16, 16 ,pyxel.COLOR_BLACK)
-                    pyxel.blt(self.x   + extra_x, self.y      + extra_y, 0, self.welk_type * 16 + self.extra_u, (self.kleur * 16)+ self.extra_v, 16, 16 ,pyxel.COLOR_BLACK)
-                    pyxel.blt(self.x + extra_x, self.y + 14 + extra_y, 0, 0, self.kleur * 16 + 80, self.gezondheid / (self.begin_gezondheid / 6), 1, pyxel.COLOR_BLACK)
-                    pyxel.blt(self.x+9 + extra_x, self.y + 14 + extra_y, 0, 0, self.kleur * 16 + 80,self.moraal/(self.begin_moraal/6), 1 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(self.cordinaten.x   + extra_x, self.cordinaten.y      + extra_y, 0, self.nivo * 16     , self.kleur * 16 + 80, 16, 16 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(self.cordinaten.x   + extra_x, self.cordinaten.y      + extra_y, 0, self.welk_type * 16 + self.extra_u, (self.kleur * 16)+ self.extra_v, 16, 16 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(self.cordinaten.x   + extra_x, self.cordinaten.y + 14 + extra_y, 0, 0, self.kleur * 16 + 80, self.gezondheid / (self.begin_gezondheid / 6), 1, pyxel.COLOR_BLACK)
+                    pyxel.blt(self.cordinaten.x+9 + extra_x, self.cordinaten.y + 14 + extra_y, 0, 0, self.kleur * 16 + 80,self.moraal/(self.begin_moraal/6), 1 ,pyxel.COLOR_BLACK)
 
                 else:
-                    pyxel.blt(self.x   + extra_x, self.y      + extra_y, 0, self.nivo * 16     , self.kleur * 16 + 80, 16, 16 ,pyxel.COLOR_BLACK)
-                    pyxel.blt(self.x   + extra_x, self.y      + extra_y, 0, self.welk_type * 16 + self.extra_u, (self.kleur * 16) + self.extra_v, 16, 16 ,pyxel.COLOR_BLACK)
-                    pyxel.blt(self.x + extra_x, self.y + 14 + extra_y, 0, 0, self.kleur * 16 + 80, self.gezondheid / (self.begin_gezondheid / 6), 1, pyxel.COLOR_BLACK)
-                    pyxel.blt(self.x+9 + extra_x, self.y + 14 + extra_y, 0, 0 , self.kleur * 16 + 80, self.moraal/(self.begin_moraal/6), 1 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(self.cordinaten.x   + extra_x, self.cordinaten.y      + extra_y, 0, self.nivo * 16     , self.kleur * 16 + 80, 16, 16 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(self.cordinaten.x   + extra_x, self.cordinaten.y      + extra_y, 0, self.welk_type * 16 + self.extra_u, (self.kleur * 16) + self.extra_v, 16, 16 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(self.cordinaten.x   + extra_x, self.cordinaten.y + 14 + extra_y, 0, 0, self.kleur * 16 + 80, self.gezondheid / (self.begin_gezondheid / 6), 1, pyxel.COLOR_BLACK)
+                    pyxel.blt(self.cordinaten.x+9 + extra_x, self.cordinaten.y + 14 + extra_y, 0, 0 , self.kleur * 16 + 80, self.moraal/(self.begin_moraal/6), 1 ,pyxel.COLOR_BLACK)
 
 
         else:
-            pyxel.blt(self.x       + extra_x, self.y + extra_y     , 0,64                  , self.kleur * 16 + 80, 16, 16 ,pyxel.COLOR_BLACK)
+            pyxel.blt(self.cordinaten.x       + extra_x, self.cordinaten.y + extra_y     , 0,64                  , self.kleur * 16 + 80, 16, 16 ,pyxel.COLOR_BLACK)
 
 
 

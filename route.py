@@ -23,8 +23,8 @@ def kan_ik_tot_hier(eind_x, eind_y, game, eenheid):
     global nieuwe_lijst_met_tegels, veld_met_tegels, terijn
     lijst_met_tegels = []
     kortse_weg = [0, 0, 0, 20, 0]
-    begin_x = eenheid.x // 16
-    begin_y = eenheid.y // 16
+    begin_x = eenheid.cordinaten.x_16
+    begin_y = eenheid.cordinaten.y_16
     bewegen = eenheid.bewegen
     boot = eenheid.boot
     tegel = [begin_x, begin_y, [begin_x, begin_y, 0], bewegen, 0]
