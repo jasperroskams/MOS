@@ -13,7 +13,7 @@ from uitleg import toon_menu
 punten = 0
 terijn_namen = ['Gras', 'Bos', 'Water', 'Berg', 'Weg', 'Brug', 'Gebouw']
 terijn_eigenschapen = [[], ['berijk - 2', 'zichtbaar + 3'], ['verdedigen - 20'], ['verdedigen + 5', 'berijk + 2', 'zicht + 4', 'zichtbaar - 2'], [], [], ['verdedigen + 5']]
-bouwmogelijkheden = [['gracht', 'verspering', 'hek', 'weg'], ['omhaken', '', '', ''], ['brug', '', '', ''], ['toren', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']]
+bouwmogelijkheden = [['gracht', 'verspering', 'hek', 'weg'], ['omhaken', '', '', ''], ['brug', '', '', ''], ['toren', 'fort', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']]
 eenheid_namen = ['zwaard', 'speer ', 'paard ', 'kanon ', 'boog  ', 'ingenieur ']
 uithouding_terugkrijgen_type = [1, 1, 2, 1, 1, 3]
 uithouding_terugkrijgen_nivo = [1, 1.5, 2, 2.5]
@@ -110,7 +110,6 @@ class Game():
         self.toon_menu = False #
         self.toon_info = False #
         self.startgebied = False #
-        self.aan_het_spelen = True #
         # self.blokken = [] #
         # for rij in self.lijst_met_blokcordinaten: #
         #     for cordinaten in rij: #
@@ -147,6 +146,8 @@ class Game():
             self.eenheiden_cordinaten.append(
                 [None,]*32
             )
+        self.aan_het_spelen = False
+        self.aan_het_spelen = True
         terrein.randomterrein(self)
 
 
@@ -165,6 +166,8 @@ class Game():
             # print(self.balansen)
 
     def update(self):
+        # if not self.terein_editor.is_bezig:
+            # print(self.terein_editor.is_bezig)
         self.terein_editor.update(self)
         if pyxel.btnp(pyxel.KEY_E):
             self.aan_het_editeren = not self.aan_het_editeren
@@ -897,11 +900,11 @@ class Game():
 
     def Naar_achter(self, geduwde, x, y, positiefx_verschil, positiefy_verschil):
         naar_achter_type_aanval = self.geselecteerde_eenheid.duwen#[4, 2, 5, 0, 0, 1]
-        naar_achter_type_verdedigen = self.geselecteerde_eenheid.duwbaarhijd#[3, 5, 4, 1, 0, 1]
+        naar_achter_type_verdedigen = geduwde.duwbaarhijd#[3, 5, 4, 1, 0, 1]
         naar_achter_type_ondergrond = [1, 2, 10, 3, 0, 0, 4]
         ondergrond = naar_achter_type_ondergrond[self.terrein[geduwde.y // 16][geduwde.x // 16]]
         self.naar_achter = random.triangular(0, 10)
-        if self.naar_achter + naar_achter_type_verdedigen + ondergrond <= -2 + positiefx_verschil * 2  + positiefy_verschil + naar_achter_type_aanval:
+        if self.naar_achter + naar_achter_type_verdedigen + ondergrond <= -2 + positiefx_verschil * 2  + positiefy_verschil * 2 + naar_achter_type_aanval:
             aantal_naast = 0
             # if self.geselecteerde_eenheid.bereik < 2:
             if x < 0:

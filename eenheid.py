@@ -33,6 +33,26 @@ GEBOUW = 6
 MUUR = 7
 POORT = 8
 
+#                    gracht, verspering, hek, weg, omhaken, '', '', '', brug, '', '', '', toren, fort, '', '', '', '', '', '', '', '', '', '', '', '', '', ''
+bouwsels_efect = [[0,   -15,         -5,  10,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,   15,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#VERDEDIGEN
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#AANVALLEN
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#AANVALLENMORAAL
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#GEZONDHEID
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#MORAAL
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#BEWEGEN
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#BEREIK
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#UITHOUDING
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     4,    1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#ZICHT
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#UITHOUDING_TERUGKRIJGEN
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,    -1,    1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#ZICHTBAARHEID
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#MORAAL_VERDEDIGEN
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#MUNITIE
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#KAN_IK_BOUWEN
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#DUWEN
+                  [0,     0,          0,   0,   0,       0,  0,  0,  0,    0,  0,  0,  0,     0,    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],#DUWBAARHIJD
+
+                  ]
+
 
 eenheden_sterren = [
     [
@@ -1040,50 +1060,50 @@ class Eenheid():
                 # zwaard
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  30,   4,   6,  30,  24,    5,   4,   8,   8,   1,   4,   1,   5],  # I
-                    [  40,   6,   8,  30,  30,    5,   5,   8,   9,   2,   4,   1,   5],  # II
-                    [  50,   8,   8,  36,  36,    6,   5,  12,   9,   2,   4,   2,   6],  # III
-                    [   0,   0,   0,   0,   0,    0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  30,   4,   6,  30,  24,    5,   4,   8,   8,   1,   4,   1,  5,   1,   8,   8],  # I
+                    [  40,   6,   8,  30,  30,    5,   5,   8,   9,   2,   4,   1,  5,   1,  10,  12],  # II
+                    [  50,   8,   8,  36,  36,    6,   5,  12,   9,   2,   4,   2,  6,   0,  16,  14],  # III
+                    [   0,   0,   0,   0,   0,    0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0],  # IV
                 ],
                 # speer
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  50,   2,   6,  36,  36,   5,   1,   6,   8,  1,   4,   2,   0],  # I
-                    [  60,   4,   6,  36,  36,   5,   1,   8,   8,  2,   4,   2,   0],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0],  # IV
+                    [  50,   2,   6,  36,  36,   5,   1,   6,   8,   1,   4,   2,   0,   0,   4,  10],  # I
+                    [  60,   4,   6,  36,  36,   5,   1,   8,   8,   2,   4,   2,   0,   0,   6,  14],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # paard
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  40,   5,  10,  30,  24,  12,   3,  16,  12,   4,   5,   2,   4],  # I
-                    [  55,   6,  10,  30,  30,  12,   5,  15,  10,   4,   4,   3,   5],  # II
-                    [  65,   8,  10,  36,  36,  10,   5,  15,  10,   5,   4,   3,   6],  # III
-                    [  75,  10,  12,  42,  42,  10,   1,  15,  10,   4,   5,   4,   0],  # IV
+                    [  40,   5,  10,  30,  24,  12,   3,  16,  12,   4,   5,   2,   4,   0,   8,   6],  # I
+                    [  55,   6,  10,  30,  30,  12,   5,  15,  10,   4,   4,   3,   5,   0,  10,   6],  # II
+                    [  65,   8,  10,  36,  36,  10,   5,  15,  10,   5,   4,   3,   6,   0,  12,   8],  # III
+                    [  75,  10,  12,  42,  42,  10,   1,  15,  10,   4,   5,   4,   0,   0,  16,  10],  # IV
                 ],
                 # kanon
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  15,   5,   8,  30,  24,   4,   8,   6,   8,  1,   3,   0,   8],  # I
-                    [  25,   8,   8,  30,  30,   4,  10,   6,   8,  2,   3,   1,   8],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0],  # IV
+                    [  15,   5,   8,  30,  24,   4,   8,   6,   8,   1,   3,   0,   8,   0,   0,   0],  # I
+                    [  25,   8,   8,  30,  30,   4,  10,   6,   8,   2,   3,   1,   8,   0,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # boog
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  25,   4,   6,  30,  24,   6,   6,   8,  10,  2,   4,   0,   7],  # I
-                    [  30,   6,   6,  30,  30,   5,   7,   8,  11,  2,   5,   1,   7],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0],  # IV
+                    [  25,   4,   6,  30,  24,   6,   6,   8,  10,   2,   4,   0,   7,   0,   0,   4],  # I
+                    [  30,   6,   6,  30,  30,   5,   7,   8,  11,   2,   5,   1,   7,   0,   0,   6],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # hamer
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  10,   1,   2,  24,  24,  12,   1,  10,   8,   3,   4,   0,   0],  # I
-                    [  15,   2,   2,  24,  30,  14,   1,  10,   8,   3,   4,   0,   0],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  10,   1,   2,  24,  24,  12,   1,  10,   8,   3,   4,   0,   0,   1,   0,   0],  # I
+                    [  15,   2,   2,  24,  30,  14,   1,  10,   8,   3,   4,   0,   0,   1,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ]
             ],
             # paars
@@ -1091,50 +1111,50 @@ class Eenheid():
                 # zwaard
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  40,   5,   6,  30,  30,   5,   4,   8,   8,  1,   4,   1,   5],  # I
-                    [  45,   6,   6,  30,  36,   5,   4,  10,   9,  2,   4,   1,   5],  # II
-                    [  50,   7,   8,  36,  36,   6,   5,  12,   9,  2,   4,   2,   6],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,  0,   0,   0,   0],  # IV
+                    [  40,   5,   6,  30,  30,   5,   4,   8,   8,   1,   4,   1,   5,   0,   0,   0],  # I
+                    [  45,   6,   6,  30,  36,   5,   4,  10,   9,   2,   4,   1,   5,   0,   0,   0],  # II
+                    [  50,   7,   8,  36,  36,   6,   5,  12,   9,   2,   4,   2,   6,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # speer
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  50,   2,   1,  42,  42,   5,   1,   8,   8,   1,   3,   1,   0],  # I
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  50,   2,   1,  42,  42,   5,   1,   8,   8,   1,   3,   1,   0,   0,   0,   0],  # I
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # paard
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  20,   3,   3,  24,  24,  10,   1,  12,  10,   4,   4,   1,   0],  # I
-                    [  30,   4,   4,  30,  30,  10,   3,  10,   8,   3,   3,   2,   2],  # II
-                    [  45,   6,   4,  36,  36,   8,   4,  12,   8,   4,   3,   2,   3],  # III
-                    [  60,   7,   5,  42,  42,   8,   1,  14,   8,   4,   3,   3,   0],  # IV
+                    [  20,   3,   3,  24,  24,  10,   1,  12,  10,   4,   4,   1,   0,   0,   0,   0],  # I
+                    [  30,   4,   4,  30,  30,  10,   3,  10,   8,   3,   3,   2,   2,   0,   0,   0],  # II
+                    [  45,   6,   4,  36,  36,   8,   4,  12,   8,   4,   3,   2,   3,   0,   0,   0],  # III
+                    [  60,   7,   5,  42,  42,   8,   1,  14,   8,   4,   3,   3,   0,   0,   0,   0],  # IV
                 ],
                 # kanon
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  20,   6,   4,  30,  24,   5,  10,   6,   9,   2,   4,   1,   7],  # I
-                    [  30,   7,   4,  30,  24,   6,  12,   6,  10,   2,   4,   2,   7],  # II
-                    [  40,   9,   4,  36,  30,   7,  14,   8,  12,   2,   4,   3,   8],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  20,   6,   4,  30,  24,   5,  10,   6,   9,   2,   4,   1,   7,   0,   0,   0],  # I
+                    [  30,   7,   4,  30,  24,   6,  12,   6,  10,   2,   4,   2,   7,   0,   0,   0],  # II
+                    [  40,   9,   4,  36,  30,   7,  14,   8,  12,   2,   4,   3,   8,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # boog
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  30,   4,   2,  30,  24,   6,   6,  10,   9,   3,   4,   1,   6],  # I
-                    [  35,   5,   2,  30,  30,   5,   8,   8,  10,   2,   5,   2,   7],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  30,   4,   2,  30,  24,   6,   6,  10,   9,   3,   4,   1,   6,   0,   0,   0],  # I
+                    [  35,   5,   2,  30,  30,   5,   8,   8,  10,   2,   5,   2,   7,   0,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # hamer
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  10,   2,   2,  30,  18,   8,   1,  12,   8,   2,   4,   0,   0],  # I
-                    [  15,   3,   2,  30,  24,   10,  1,  14,   8,   3,   4,   0,   0],  # II
-                    [   9,   4,   3,  36,  30,   12,  1,  16,   8,   3,   4,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  10,   2,   2,  30,  18,   8,   1,  12,   8,   2,   4,   0,   0,   0,   0,   0],  # I
+                    [  15,   3,   2,  30,  24,   10,  1,  14,   8,   3,   4,   0,   0,   0,   0,   0],  # II
+                    [   9,   4,   3,  36,  30,   12,  1,  16,   8,   3,   4,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ]
             ],
             # wit
@@ -1142,50 +1162,50 @@ class Eenheid():
                 # zwaard
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  40,   6,   3,  36,  30,   5,   5,   8,   9,   2,   4,   2,   8],  # I
-                    [  50,   7,   4,  42,  36,   6,   5,  10,   9,   2,   4,   2,   8],  # II
-                    [  60,   8,   4,  42,  42,   6,   6,  12,  10,   2,   5,   3,   9],  # III
-                    [  70,   9,   5,  48,  48,   8,   6,  12,  10,   2,   5,   4,  10],  # IV
+                    [  40,   6,   3,  36,  30,   5,   5,   8,   9,   2,   4,   2,   8,   0,   0,   0],  # I
+                    [  50,   7,   4,  42,  36,   6,   5,  10,   9,   2,   4,   2,   8,   0,   0,   0],  # II
+                    [  60,   8,   4,  42,  42,   6,   6,  12,  10,   2,   5,   3,   9,   0,   0,   0],  # III
+                    [  70,   9,   5,  48,  48,   8,   6,  12,  10,   2,   5,   4,  10,   0,   0,   0],  # IV
                 ],
                 # speer
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  45,   2,   2,  30,  24,   4,   1,   6,   8,   1,   3,   1,   0],  # I
-                    [  50,   3,   2,  30,  30,   5,   1,   8,   8,   2,   4,   1,   0],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  45,   2,   2,  30,  24,   4,   1,   6,   8,   1,   3,   1,   0,   0,   0,   0],  # I
+                    [  50,   3,   2,  30,  30,   5,   1,   8,   8,   2,   4,   1,   0,   0,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # paard
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  30,   3,   3,  24,  24,  10,   1,  12,  10,   4 ,  4,   1,   0],  # I
-                    [  35,   4,   3,  30,  30,  10,   1,  10,   9,   3 ,  4,   1,   0],  # II
-                    [  40,   6,   4,  36,  30,   8,   4,  12,   9,   3 ,  4,   2,   3],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0 ,  0,   0,   0],  # IV
+                    [  30,   3,   3,  24,  24,  10,   1,  12,  10,   4 ,  4,   1,   0,   0,   0,   0],  # I
+                    [  35,   4,   3,  30,  30,  10,   1,  10,   9,   3 ,  4,   1,   0,   0,   0,   0],  # II
+                    [  40,   6,   4,  36,  30,   8,   4,  12,   9,   3 ,  4,   2,   3,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0 ,  0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # kanon
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  10,   5,   6,  30,  18,   3,   9,   6,   9,   2,   3,   1,   6],  # I
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  10,   5,   6,  30,  18,   3,   9,   6,   9,   2,   3,   1,   6,   0,   0,   0],  # I
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # boog
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  20,   3,   2,  24,  24,   8,   6,   8,   9,   2,   4,   0,   6],  # I
-                    [  30,   5,   2,  30,  30,   5,   6,   8,  10,   2,   4,   1,   7],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  20,   3,   2,  24,  24,   8,   6,   8,   9,   2,   4,   0,   6,   0,   0,   0],  # I
+                    [  30,   5,   2,  30,  30,   5,   6,   8,  10,   2,   4,   1,   7,   0,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # hamer
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [   5,   1,   1,  24,  24,   8,   1,  10,   8,   2,   4,   0,   0],  # I
-                    [  10,   2,   1,  24,  30,   8,   1,  10,   8,   3,   4,   0,   0],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [   5,   1,   1,  24,  24,   8,   1,  10,   8,   2,   4,   0,   0,   0,   0,   0],  # I
+                    [  10,   2,   1,  24,  30,   8,   1,  10,   8,   3,   4,   0,   0,   0,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ]
             ],
             # rood
@@ -1193,50 +1213,50 @@ class Eenheid():
                 # zwaard
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  30,   5,   2,  30,  24,   5,   4,   6,   8,   1,   4,   2,   6],  # I
-                    [  40,   6,   3,  30,  30,   5,   4,   8,   9,   2,   4,   2,   7],  # II
-                    [  45,   7,   3,  36,  36,   6,   5,  10,   9,   2,   4,   3,   7],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  30,   5,   2,  30,  24,   5,   4,   6,   8,   1,   4,   2,   6,   1,   6,   6],  # I
+                    [  40,   6,   3,  30,  30,   5,   4,   8,   9,   2,   4,   2,   7,   0,   8,  10],  # II
+                    [  45,   7,   3,  36,  36,   6,   5,  10,   9,   2,   4,   3,   7,   0,  10,  14],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # speer
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  40,   2,   3,  30,  24,   4,   1,   6,   8,   1,   3,   1,   0],  # I
-                    [  50,   3,   3,  36,  36,   5,   1,   8,   8,   2,   4,   2,   0],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  40,   2,   3,  30,  24,   4,   1,   6,   8,   1,   3,   1,   0,   0,   4,   8],  # I
+                    [  50,   3,   3,  36,  36,   5,   1,   8,   8,   2,   4,   2,   0,   0,   6,  12],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # paard
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  25,   3,   3,  24,  24,  10,   1,  12,  15,   4,   4,   2,   0],  # I
-                    [  30,   5,   3,  30,  30,  10,   4,  10,   9,   3,   4,   2,   1],  # II
-                    [  40,   6,   4,  36,  36,   8,   5,  10,   9,   3,   4,   3,   5],  # III
-                    [  50,   8,   5,  36,  36,   8,   1,  12,  10,   3,   5,   3,   0],  # IV
+                    [  25,   3,   3,  24,  24,  10,   1,  12,  15,   4,   4,   2,   0,   0,   8,   4],  # I
+                    [  30,   5,   3,  30,  30,  10,   4,  10,   9,   3,   4,   2,   1,   0,  12,   8],  # II
+                    [  40,   6,   4,  36,  36,   8,   5,  10,   9,   3,   4,   3,   5,   0,  10,   8],  # III
+                    [  50,   8,   5,  36,  36,   8,   1,  12,  10,   3,   5,   3,   0,   0,  16,  16],  # IV
                 ],
                 # kanon
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  10,   6,   4,  30,  18,   4,   8,   6,   9,   2,   4,   1,   6],  # I
-                    [  20,   8,   4,  30,  24,   4,  10,   6,   9,   2,   4,   2,   6],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  10,   6,   4,  30,  18,   4,   8,   6,   9,   2,   4,   1,   6,   0,   0,   0],  # I
+                    [  20,   8,   4,  30,  24,   4,  10,   6,   9,   2,   4,   2,   6,   0,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # boog
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  30,   4,   3,  30,  24,   7,   8,  10,  10,   3,   4,   2,   7],  # I
-                    [  40,   6,   3,  30,  30,   5,  10,   8,  11,   2,   5,   2,   8],  # II
-                    [  50,   8,   4,  36,  36,   6,  13,  10,  12,   3,   6,   3,   9],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  30,   4,   3,  30,  24,   7,   8,  10,  10,   3,   4,   2,   7,   0,   0,   4],  # I
+                    [  40,   6,   3,  30,  30,   5,  10,   8,  11,   2,   5,   2,   8,   0,   0,   6],  # II
+                    [  50,   8,   4,  36,  36,   6,  13,  10,  12,   3,   6,   3,   9,   0,   0,   8],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # hamer
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [   5,   1,   1,  24,  18,   8,   1,  10,   8,   3,   4,   0,   0],  # I
-                    [  10,   2,   1,  24,  18,  10,   1,  10,   8,   3,   4,   0,   0],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [   5,   1,   1,  24,  18,   8,   1,  10,   8,   3,   4,   0,   0,   1,   0,   0],  # I
+                    [  10,   2,   1,  24,  18,  10,   1,  10,   8,   3,   4,   0,   0,   1,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ]
             ],
             # geel
@@ -1244,50 +1264,50 @@ class Eenheid():
                 # zwaard
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  20,   3,   2,  24,  24,   5,   4,    6,   8,   1,   3,   1,   4],  # I
-                    [  30,   4,   2,  30,  30,   5,   4,    8,   8,   2,   4,   1,   4],  # II
-                    [  40,   5,   3,  36,  36,   6,   5,   10,   8,   2,   4,   2,   5],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,    0,   0,   0,   0,   0,   0],  # IV
+                    [  20,   3,   2,  24,  24,   5,   4,   6,   8,   1,   3,   1,   4,   0,   0,   0],  # I
+                    [  30,   4,   2,  30,  30,   5,   4,   8,   8,   2,   4,   1,   4,   0,   0,   0],  # II
+                    [  40,   5,   3,  36,  36,   6,   5,  10,   8,   2,   4,   2,   5,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # speer
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  45,   4,   3,  36,  42,   5,   4,   8,   8,   2,   4,   2,   6],  # I
-                    [  55,   6,   4,  42,  48,   6,   4,  10,   8,   2,   4,   2,   7],  # II
-                    [  65,   8,   5,  48,  54,   6,   4,  12,   8,   3,   5,   3,   8],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  45,   4,   3,  36,  42,   5,   4,   8,   8,   2,   4,   2,   6,   0,   0,   0],  # I
+                    [  55,   6,   4,  42,  48,   6,   4,  10,   8,   2,   4,   2,   7,   0,   0,   0],  # II
+                    [  65,   8,   5,  48,  54,   6,   4,  12,   8,   3,   5,   3,   8,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # paard
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  20,   3,   3,  24,  24,  12,   5,  10,  10,   3,   4,   1,   2],  # I
-                    [  30,   5,   4,  30,  30,  10,   4,   8,   8,   3,   4,   2,   3],  # II
-                    [  40,   8,   4,  36,  36,   8,   4,  12,   8,   4,   4,   2,   4],  # III
-                    [  50,   8,   5,  42,  42,   8,   1,  10,   8,   3,   5,   3,   1],  # IV
+                    [  20,   3,   3,  24,  24,  12,   5,  10,  10,   3,   4,   1,   2,   0,   0,   0],  # I
+                    [  30,   5,   4,  30,  30,  10,   4,   8,   8,   3,   4,   2,   3,   0,   0,   0],  # II
+                    [  40,   8,   4,  36,  36,   8,   4,  12,   8,   4,   4,   2,   4,   0,   0,   0],  # III
+                    [  50,   8,   5,  42,  42,   8,   1,  10,   8,   3,   5,   3,   1,   0,   0,   0],  # IV
                 ],
                 # kanon
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  20,   5,   5,  24,  21,   6,   8,   6,   8,   2,   3,   1,   7],  # I
-                    [  30,   7,   6,  27,  24,   6,  10,   6,   8,   2,   3,   2,   9],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  20,   5,   5,  24,  21,   6,   8,   6,   8,   2,   3,   1,   7,   0,   0,   0],  # I
+                    [  30,   7,   6,  27,  24,   6,  10,   6,   8,   2,   3,   2,   9,   0,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # boog
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  20,   4,   2,  30,  24,   6,   5,   6,   9,   3,   4,   1,   6],  # I
-                    [  25,   6,   2,  30,  30,   5,   7,   8,  10,   2,   5,   2,   7],  # II
-                    [  30,   8,   2,  36,  36,   6,  10,   9,  11,   2,   5,   3,   8],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  20,   4,   2,  30,  24,   6,   5,   6,   9,   3,   4,   1,   6,   0,   0,   0],  # I
+                    [  25,   6,   2,  30,  30,   5,   7,   8,  10,   2,   5,   2,   7,   0,   0,   0],  # II
+                    [  30,   8,   2,  36,  36,   6,  10,   9,  11,   2,   5,   3,   8,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ],
                 # hamer
                 [
                     # ver  aan  anm  gez  mor  bew  ber  uit  zie  ter  zba  mve  mun  bou  duw  dba
-                    [  10,   1,   1,  24,  24,  10,   1,  10,   8,   3,   4,   0,   0],  # I
-                    [  15,   3,   1,  30,  30,  10,   1,  10,   8,   3,   4,   0,   0],  # II
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
-                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
+                    [  10,   1,   1,  24,  24,  10,   1,  10,   8,   3,   4,   0,   0,   0,   0,   0],  # I
+                    [  15,   3,   1,  30,  30,  10,   1,  10,   8,   3,   4,   0,   0,   0,   0,   0],  # II
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # III
+                    [   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0],  # IV
                 ]
             ],
         ],
@@ -1700,54 +1720,54 @@ class Eenheid():
             self.is_geweest = True
 
         if ondergrond == GRAS:
-            self.verdedigen = self.begin_verdedigen
+            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
             self.bereik = self.begin_bereik
-            self.zichtbaar = self.begin_zichtbaar
-            self.zicht = self.begin_zicht
+            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == BOS:
             if self.bereik > 3:
                 self.bereik = self.begin_bereik - 2
-            self.zichtbaar = self.begin_zichtbaar + 3
-            self.verdedigen = self.begin_verdedigen
-            self.zicht = self.begin_zicht
+            self.zichtbaar = self.begin_zichtbaar + 3 + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
+            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == WATER:
-            self.verdedigen = self.begin_verdedigen - 20
+            self.verdedigen = self.begin_verdedigen - 20 + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
             self.bereik = self.begin_bereik
-            self.zichtbaar = self.begin_zichtbaar
-            self.zicht = self.begin_zicht
+            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == BERG:
-            self.verdedigen = self.begin_verdedigen + 15
+            self.verdedigen = self.begin_verdedigen + 15 + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
             if self.bereik >= 2:
                 self.bereik = self.begin_bereik + 2
-            self.zicht = self.begin_zicht + 4
-            self.zichtbaar = self.begin_zichtbaar - 2
+            self.zicht = self.begin_zicht + 4 + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zichtbaar = self.begin_zichtbaar - 2 + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == WEG:
-            self.verdedigen = self.begin_verdedigen
+            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
             self.bereik = self.begin_bereik
-            self.zichtbaar = self.begin_zichtbaar
-            self.zicht = self.begin_zicht
+            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == BRUG:
-            self.verdedigen = self.begin_verdedigen
+            self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
             self.bereik = self.begin_bereik
-            self.zichtbaar = self.begin_zichtbaar
-            self.zicht = self.begin_zicht
+            self.zichtbaar = self.begin_zichtbaar + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zicht = self.begin_zicht + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == GEBOUW:
-            self.verdedigen = self.begin_verdedigen + 5
+            self.verdedigen = self.begin_verdedigen + 5 + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
             self.bereik = self.begin_bereik
-            self.zichtbaar = self.begin_zichtbaar + 2
-            self.zicht = self.begin_zicht - 1
+            self.zichtbaar = self.begin_zichtbaar + 2 + bouwsels_efect[ZICHTBAARHEID][game.bouwsels[self.y // 16][self.x // 16]]
+            self.zicht = self.begin_zicht - 1 + bouwsels_efect[ZICHT][game.bouwsels[self.y // 16][self.x // 16]]
             self.aanvallen = self.begin_aanvallen
 
         if ondergrond == MUUR:
@@ -1763,6 +1783,8 @@ class Eenheid():
                 self.bereik = self.begin_bereik + 2
             self.zicht = self.begin_zicht + 4
             self.zichtbaar = self.begin_zichtbaar
+
+        # self.verdedigen = self.begin_verdedigen + bouwsels_efect[VERDEDIGEN][game.bouwsels[self.y // 16][self.x // 16]]
 
 
 
