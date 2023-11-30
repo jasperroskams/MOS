@@ -1,4 +1,3 @@
-from game import Game
 
 BOVEN = 0
 RECHTS = 1
@@ -16,11 +15,13 @@ richtingen = [
 
 class GameCoordinaat():
     """Converteert muis x en y naar game coordinaat (tegel index)"""
-    def __init__(self, x, y):
-        z = Game.get_zoom_factor()
-        self.x = x // z
-        self.y = y // z
+    def __init__(self, x, y, Z):
+        z = Z
+        self.x = x
+        self.y = y
+        self.x_cord = self.x // z
+        self.y_cord = self.y // z
 
 
     def naar_(self, richting):
-        return
+        return GameCoordinaat(self.x + richting[richting[X]], self.y + richting[richting[Y]])

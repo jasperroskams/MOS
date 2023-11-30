@@ -1,6 +1,6 @@
 import math
 import random
-from cordinaten import Cordinaaten
+from cordinaten import GameCoordinaat
 import pyxel
 from terrein import testerrein, getTerrein
 ondergrond_impact = [2, 3, 5, 3, 1, 1, 2]
@@ -1577,7 +1577,7 @@ class Eenheid():
         self.kleur = kleur
         self.welk_type = welk_type
         self.nivo = nivo
-        self.cordinaten = Cordinaaten(x, y)
+        self.cordinaten = GameCoordinaat(x, y, 16)
         # self.x = x
         # self.y = y
         self.orginele_eenheid = self.welk_type
@@ -1715,7 +1715,6 @@ class Eenheid():
         self.verschil = self.xverschil + self.yverschil
         self.vorig_x = self.cordinaten.x
         self.vorig_y = self.cordinaten.y
-        self.cordinaten.update()
         self.vlakterrein = getTerrein()
         ondergrond = getTerrein()[self.cordinaten.y_16][self.cordinaten.x_16]
 

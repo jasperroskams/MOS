@@ -1107,7 +1107,10 @@ class Game():
     def run(self):
         pyxel.run(self.update, self.draw)
 
-    @staticmethod
-    def get_zoom_factor():
-        return 7 or 16
+    def get_zoom_factor(self):
+        if self.aan_het_editeren:
+            return 7
+        else:
+            return 16
+
 
