@@ -53,6 +53,7 @@ class Game():
         # self.x = 0 # actieve coordinaat onder muispointer
         # self.y = 0 #
         self.cordinaten = GameCoordinaat(0, 0, 16)
+        self.zoom = 16
         self.type = 0 #
         self.nivo = 0 #
         self.kleur = 0 #
@@ -206,12 +207,15 @@ class Game():
                     pyxel.mouse(False)
             else:
                 pyxel.mouse(True)
-
-            self.cordinaten = GameCoordinaat((pyxel.mouse_x // 16) * 16, (pyxel.mouse_y // 16) * 16, 16)
+            if self.aan_het_editeren:
+                self.zoom = 7
+            if self.toon_menu:
+                self.zoom = 1
+            self.cordinaten = GameCoordinaat((pyxel.mouse_x // 16) * 16, (pyxel.mouse_y // 16) * 16, self.zoom)
             # self.x = (pyxel.mouse_x // 16) * 16
             # self.y = (pyxel.mouse_y // 16) * 16
-            self.aangepaste_x = self.cordinaten.x + self.begin_teken_x * -16
-            self.aangepaste_y = self.cordinaten.y + self.begin_teken_y * -16
+            self.aangepaste_x = self.cordinaten.x * 16 + self.begin_teken_x * -16
+            self.aangepaste_y = self.cordinaten.y * 16 + self.begin_teken_y * -16
             # print(self.x, self.y, self.aangepaste_x, self.aangepaste_y)
 
             self.terrein = getTerrein()
@@ -263,13 +267,13 @@ class Game():
                 if pyxel.btnp(pyxel.KEY_I):
                     self.toon_info = not self.toon_info
     # scherm bewegen
-                if self.x >= self.breedte:
+                if self.cordinaten.x >= self.breedte:
                     self.begin_teken_x -= 1
-                if self.x <= -16:
+                if self.cordinaten.x <= -16:
                     self.begin_teken_x += 1
-                if self.y >= self.hoogte:
+                if self.cordinaten.y >= self.hoogte:
                     self.begin_teken_y -= 1
-                if self.y <= -16:
+                if self.cordinaten.y <= -16:
                     self.begin_teken_y += 1
 
     # minder / meer punten
