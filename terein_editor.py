@@ -5,6 +5,7 @@ lijst_met_terijnkleuren = [11, 3, 6, 13, 15, 4, 14]
 
 PEN = 0
 EMMER = 1
+VLAK = 2
 GESELECTEERT = pyxel.COLOR_BLACK
 NIET_GESELECTEERT = pyxel.COLOR_ORANGE
 
@@ -31,6 +32,9 @@ class Terein_editor():
                         terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] = self.geselecterde_ondergrond
                         # print('gedaan')
                         self.is_bezig = False
+                    elif self.geselecterd_tekenvoorwerp == VLAK:
+                        self.vierkant()
+                        pass
                 if pyxel.mouse_x >= len(lijst_met_terijnkleuren) * 16 and pyxel.mouse_y >= game.hoogte - 16:
                     self.geselecterd_tekenvoorwerp = pyxel.mouse_x // 16 - (len(lijst_met_terijnkleuren))
             if pyxel.btn(pyxel.MOUSE_BUTTON_RIGHT):
@@ -47,10 +51,16 @@ class Terein_editor():
                     pyxel.rect(x*7, y*7, 6, 6, lijst_met_terijnkleuren[blok])
             if self.geselecterd_tekenvoorwerp == PEN:
                 pyxel.blt(len(lijst_met_terijnkleuren) * 16, game.hoogte - 16, 2, 96, 0, 16, 16, GESELECTEERT)
-                pyxel.blt(len(lijst_met_terijnkleuren) * 16 + 16, game.hoogte - 16, 2, 112, 0, 16, 16, NIET_GESELECTEERT)
-            elif self.geselecterd_tekenvoorwerp == EMMER:
+            else:
                 pyxel.blt(len(lijst_met_terijnkleuren) * 16, game.hoogte - 16, 2, 96, 0, 16, 16, NIET_GESELECTEERT)
+            if self.geselecterd_tekenvoorwerp == EMMER:
                 pyxel.blt(len(lijst_met_terijnkleuren) * 16 + 16, game.hoogte - 16, 2, 112, 0, 16, 16, GESELECTEERT)
+            else:
+                pyxel.blt(len(lijst_met_terijnkleuren) * 16 + 16, game.hoogte - 16, 2, 112, 0, 16, 16, NIET_GESELECTEERT)
+            if self.geselecterd_tekenvoorwerp == VLAK:
+                pyxel.blt(len(lijst_met_terijnkleuren) * 16 + 32, game.hoogte - 16, 2, 128, 0, 16, 16, GESELECTEERT)
+            else:
+                pyxel.blt(len(lijst_met_terijnkleuren) * 16 + 32, game.hoogte - 16, 2, 128, 0, 16, 16, NIET_GESELECTEERT)
         for i in range(0, len(lijst_met_terijnkleuren)):
             pyxel.rect(i * 16, game.hoogte - 16, 15, 15, lijst_met_terijnkleuren[i])
         game.highlight(self.geselecterde_ondergrond * 16, game.hoogte - 16)
@@ -65,4 +75,11 @@ class Terein_editor():
                         if 0 <= y + iy <= 31 and 0 <= x + ix <= 31:
                             if terrein[y + iy][x + ix] == kleur:
                                 self.opvulen(y + iy, x + ix, kleur, terrein)
+
+
+    def vierkant(self, beginX, beginY, eindX, eindY, kleur, terrein):
+        for y in range(0, (beginY - eindY)):
+            for x in range(0, (beginX - eindX)):
+                terrein[beginY+y][beginX+x] = kleur
+
 
