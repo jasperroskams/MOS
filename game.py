@@ -267,13 +267,13 @@ class Game():
                 if pyxel.btnp(pyxel.KEY_I):
                     self.toon_info = not self.toon_info
     # scherm bewegen
-                if self.cordinaten.x >= self.breedte:
+                if self.cordinaten.x >= self.breedte // 16:
                     self.begin_teken_x -= 1
-                if self.cordinaten.x <= -16:
+                if self.cordinaten.x <= -1:
                     self.begin_teken_x += 1
-                if self.cordinaten.y >= self.hoogte:
+                if self.cordinaten.y >= self.hoogte // 16:
                     self.begin_teken_y -= 1
-                if self.cordinaten.y <= -16:
+                if self.cordinaten.y <= -1:
                     self.begin_teken_y += 1
 
     # minder / meer punten
@@ -491,14 +491,14 @@ class Game():
                     print(self.aantal_gestorven)
             if pyxel.btnp(pyxel.KEY_G):
                 self.is_gedaan = True
-            if self.breedte -16 == self.x and self.hoogte - 16 == self.y and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+            if self.breedte -16 == self.cordinaten.x * 16 and self.hoogte - 16 == self.cordinaten.y * 16 and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
                 self.toon_menu = not self.toon_menu
             if self.toon_menu:
-                if (self.breedte // 2) - 16 == self.x and self.hoogte - 32 <= self.y <= self.hoogte - 16 and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+                if (self.breedte // 2) - 16 == self.cordinaten.x * 16 and self.hoogte - 32 <= self.cordinaten.y * 16 <= self.hoogte - 16 and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
                     self.menu_pagina -= 1
                     if self.menu_pagina < 0:
                         self.menu_pagina = self.aantal_menu_paginas
-                if (self.breedte // 2) == self.x  and self.hoogte - 32 <= self.y <= self.hoogte - 16 and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+                if (self.breedte // 2) == self.cordinaten.x * 16 and self.hoogte - 32 <= self.cordinaten.y * 16 <= self.hoogte - 16 and pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
                     self.menu_pagina += 1
                     if self.menu_pagina > self.aantal_menu_paginas:
                         self.menu_pagina = 0
@@ -746,11 +746,11 @@ class Game():
                             else:
                                 kant = self.game_breedte - (self.x_pos_start + self.grootte + 1) * 16
                             if kant <= self.aangepaste_x < kant + (self.grootte + 1) * 16 and self.y_pos_start * 16 <= self.aangepaste_y <= self.y_pos_start * 16 + (self.hoogte - (self.grootte * 16)):
-                                self.voorbeeldeenheid.x = self.x
-                                self.voorbeeldeenheid.y = self.y
+                                self.voorbeeldeenheid.x = self.cordinaten.x
+                                self.voorbeeldeenheid.y = self.cordinaten.y
                                 self.voorbeeldeenheid.draw(self, True)
                             else:
-                                pyxel.blt(self.x, self.y, 0, 64, self.kleur * 16 + 80, 16, 16, pyxel.COLOR_BLACK)
+                                pyxel.blt(self.cordinaten.x * 16, self.cordinaten.y * 16, 0, 64, self.kleur * 16 + 80, 16, 16, pyxel.COLOR_BLACK)
 
                             # pyxel.blt(self.breedte - eenheden_sterren[self.voorbeeldeenheid.T][self.voorbeeldeenheid.kleur][self.voorbeeldeenheid.welk_type][self.voorbeeldeenheid.nivo], 17, 2, 16, 8, -eenheden_sterren[self.voorbeeldeenheid.T][self.voorbeeldeenheid.kleur][self.voorbeeldeenheid.welk_type][self.voorbeeldeenheid.nivo], 8, pyxel.COLOR_BLACK)
 
