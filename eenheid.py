@@ -1710,8 +1710,8 @@ class Eenheid():
                 self.cordinaten.x = self.vorig_x
                 self.cordinaten.y = self.vorig_y
         # print(self.gezondijd , self.MORAAL)
-        self.xverschil = abs(game.aangepaste_x - self.cordinaten.x)
-        self.yverschil = abs(game.aangepaste_y - self.cordinaten.y)
+        self.xverschil = abs(game.teken_cordinaten.x - self.cordinaten.x)
+        self.yverschil = abs(game.teken_cordinaten.y - self.cordinaten.y)
         self.verschil = self.xverschil + self.yverschil
         self.vorig_x = self.cordinaten.x
         self.vorig_y = self.cordinaten.y

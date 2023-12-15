@@ -53,6 +53,8 @@ class Game():
         # self.x = 0 # actieve coordinaat onder muispointer
         # self.y = 0 #
         self.cordinaten = GameCoordinaat(0, 0, 16)
+        self.game_cordinaten = GameCoordinaat(0, 0, 16)
+        self.teken_cordinaten = GameCoordinaat(0, 0, 16)
         self.zoom = 16
         self.type = 0 #
         self.nivo = 0 #
@@ -214,8 +216,10 @@ class Game():
             self.cordinaten = GameCoordinaat((pyxel.mouse_x // 16) * 16, (pyxel.mouse_y // 16) * 16, self.zoom)
             # self.x = (pyxel.mouse_x // 16) * 16
             # self.y = (pyxel.mouse_y // 16) * 16
-            self.aangepaste_x = self.cordinaten.x * 16 + self.begin_teken_x * -16
-            self.aangepaste_y = self.cordinaten.y * 16 + self.begin_teken_y * -16
+            self.game_cordinaten.x = self.cordinaten.x
+            self.game_cordinaten.y = self.cordinaten.y
+            self.teken_cordinaten.x = self.game_cordinaten.x * 16 + self.begin_teken_x * -16
+            self.teken_cordinaten.y = self.game_cordinaten.y * 16 + self.begin_teken_y * -16
             # print(self.x, self.y, self.aangepaste_x, self.aangepaste_y)
 
             self.terrein = getTerrein()
@@ -360,9 +364,9 @@ class Game():
                 if pyxel.btnr(pyxel.MOUSE_BUTTON_RIGHT):
                     self.val_aan()
                     if self.eenheden_aan_het_plaatsen:
-                        if self.eenheiden_cordinaten[self.aangepaste_y // 16][self.aangepaste_x // 16] != None:
-                            eenheid = self.eenheiden_cordinaten[self.aangepaste_y // 16][self.aangepaste_x // 16]
-                            self.eenheiden_cordinaten[self.aangepaste_y // 16][self.aangepaste_x // 16] = None
+                        if self.eenheiden_cordinaten[self.teken_cordinaten.y // 16][self.teken_cordinaten.x // 16] != None:
+                            eenheid = self.eenheiden_cordinaten[self.teken_cordinaten.y // 16][self.teken_cordinaten.x // 16]
+                            self.eenheiden_cordinaten[self.teken_cordinaten.y // 16][self.teken_cordinaten.x // 16] = None
                             self.eenheiden[self.geselecterde_kleur].remove(eenheid)
                             self.eenheiden_punten[self.geselecterde_kleur] += eenheid.nivo + 1
                             self.aantal_eenheden_geplaatst_nivo[self.geselecterde_kleur][eenheid.nivo] -= 1
@@ -738,14 +742,14 @@ class Game():
                         pyxel.text(self.breedte - 29, 7, f"T{self.max_aantal_eenheiden_geplaatst_punten[self.T][self.geselecterde_kleur][self.type] - self.aantal_eenheiden_geplaatst_punten[self.geselecterde_kleur][self.type]}", self.lijst_met_eenheidkleuren[self.geselecterde_kleur])
                         pyxel.text(self.breedte - 29, 1, f"N{self.max_aantal_eenheden_nivo[self.nivo] - self.aantal_eenheden_geplaatst_nivo[self.geselecterde_kleur][self.nivo]}", self.lijst_met_eenheidkleuren[self.geselecterde_kleur])
                         if self.max_aantal_eenheiden_geplaatst_punten[self.T][self.kleur][self.type] <= self.aantal_eenheiden_geplaatst_punten[self.kleur][self.type] or self.max_aantal_eenheden_nivo[self.nivo] <= self.aantal_eenheden_geplaatst_nivo[self.kleur][self.nivo]:
-                            pyxel.blt(self.x, self.y, 0, 64, self.kleur * 16 + 80, 16, 16, pyxel.COLOR_BLACK)
+                            pyxel.blt(self.cordinaten.x * 16, self.cordinaten.y * 16, 0, 64, self.kleur * 16 + 80, 16, 16, pyxel.COLOR_BLACK)
                         else:
                             self.voorbeeldeenheid.draw(self, True)
                             if self.team_2 < 0 and self.team_1 < 0 or self.geselecterde_kleur == self.team_1:
                                 kant = self.x_pos_start * 16
                             else:
                                 kant = self.game_breedte - (self.x_pos_start + self.grootte + 1) * 16
-                            if kant <= self.aangepaste_x < kant + (self.grootte + 1) * 16 and self.y_pos_start * 16 <= self.aangepaste_y <= self.y_pos_start * 16 + (self.hoogte - (self.grootte * 16)):
+                            if kant <= self.teken_cordinaten.x < kant + (self.grootte + 1) * 16 and self.y_pos_start * 16 <= self.teken_cordinaten.y <= self.y_pos_start * 16 + (self.hoogte - (self.grootte * 16)):
                                 self.voorbeeldeenheid.x = self.cordinaten.x
                                 self.voorbeeldeenheid.y = self.cordinaten.y
                                 self.voorbeeldeenheid.draw(self, True)
@@ -838,9 +842,9 @@ class Game():
         if self.eenheden_aan_het_plaatsen:
             if self.max_aantal_eenheiden_geplaatst_punten[self.T][self.kleur][self.type] > self.aantal_eenheiden_geplaatst_punten[self.kleur][self.type] + self.nivo or self.boot:
                 if self.max_aantal_eenheden_nivo[self.nivo] > self.aantal_eenheden_geplaatst_nivo[self.kleur][self.nivo] and self.eenheiden_punten[self.geselecterde_kleur] - self.nivo >= 0:
-                    if self.breedte - 16 != self.x or self.hoogte - 16 != self.y:
+                    if self.breedte - 16 != self.cordinaten.x or self.hoogte - 16 != self.cordinaten.y:
                         # print(f"{self.max_aantal_eenheiden_geplaatst_punten[self.kleur][self.type]} : {self.aantal_eenheiden_geplaatst_punten[self.kleur][self.type]}")
-                        self.nieuw_eenheid(self.kleur, self.type, self.nivo, self.aangepaste_x, self.aangepaste_y, self.T, self.boot)
+                        self.nieuw_eenheid(self.kleur, self.type, self.nivo, self.game_cordinaten.x, self.game_cordinaten.y, self.T, self.boot)
                         self.eenheiden_punten[self.kleur] -= self.nivo + 1
                         self.aantal_eenheiden_geplaatst[self.type] += 1
                         self.aantal_eenheden_geplaatst_nivo[self.kleur][self.nivo] += 1
@@ -852,23 +856,23 @@ class Game():
         elif not self.eenheden_aan_het_plaatsen:
             for geselecteerde_eenheid in self.eenheiden[self.geselecterde_kleur]:
                 # print(geselecteerde_eenheid.boot)
-                if geselecteerde_eenheid.cordinaten.x == self.aangepaste_x and geselecteerde_eenheid.cordinaten.y == self.aangepaste_y and not geselecteerde_eenheid.is_geweest:
+                if geselecteerde_eenheid.cordinaten.x == self.teken_cordinaten.x and geselecteerde_eenheid.cordinaten.y == self.teken_cordinaten.y and not geselecteerde_eenheid.is_geweest:
                     for eenheid in self.eenheiden[self.geselecterde_kleur]:
-                        if eenheid.cordinaten.x != self.aangepaste_x or eenheid.cordinaten.y != self.aangepaste_y:
+                        if eenheid.cordinaten.x != self.teken_cordinaten.x or eenheid.cordinaten.y != self.teken_cordinaten.y:
                             eenheid.is_geselecteerd = False
                     geselecteerde_eenheid.is_geselecteerd = not geselecteerde_eenheid.is_geselecteerd
                     break
                 for i, kleur in enumerate(self.eenheiden):
                     for eenheid in kleur:
-                        if eenheid.cordinaten.x == self.aangepaste_x and eenheid.cordinaten.y == self.aangepaste_y:
+                        if eenheid.cordinaten.x == self.teken_cordinaten.x and eenheid.cordinaten.y == self.teken_cordinaten.y:
                             self.kan_ik_verplaatsen = False
                 if self.geselecteerde_eenheid and self.kan_ik_verplaatsen:
                     if self.kortste_weg != False:
                         if self.geselecteerde_eenheid.boot == 0 and self.geselecteerde_eenheid.welk_type == 0:
                             vlakterijn[self.geselecteerde_eenheid.cordinaten.y][self.geselecteerde_eenheid.cordinaten.x] = 2
                         self.eenheiden_cordinaten[geselecteerde_eenheid.cordinaten.y][geselecteerde_eenheid.cordinaten.x] = None
-                        self.geselecteerde_eenheid.cordinaten.x = self.aangepaste_x
-                        self.geselecteerde_eenheid.cordinaten.y = self.aangepaste_y
+                        self.geselecteerde_eenheid.cordinaten.x = self.teken_cordinaten.x
+                        self.geselecteerde_eenheid.cordinaten.y = self.teken_cordinaten.y
                         self.geselecteerde_eenheid.is_geselecteerd = False
                         self.geselecteerde_eenheid.uithouding -= self.kortste_weg[4]
                         self.geselecteerde_eenheid.bewegen = self.kortste_weg[3]
@@ -895,8 +899,8 @@ class Game():
             vlakterijn[eenheid.cordinaten.y][eenheid.cordinaten.x] = 4
         for bezegeeenheid in self.eenheiden[self.geselecterde_kleur]:
             if bezegeeenheid.is_geselecteerd and bezegeeenheid.bereik < 2:
-                bezegeeenheid.x = self.aangepaste_x
-                bezegeeenheid.y = self.aangepaste_y
+                bezegeeenheid.x = self.teken_cordinaten.x
+                bezegeeenheid.y = self.teken_cordinaten.y
 
     def Naar_achter(self, geduwde, x, y, positiefx_verschil, positiefy_verschil):
         naar_achter_type_aanval = self.geselecteerde_eenheid.duwen#[4, 2, 5, 0, 0, 1]
@@ -976,7 +980,7 @@ class Game():
                         # print(extra_aanvalen_moraal)
 
                         # print(f"{positiefx_verschil} : {positiefy_verschil} : {self.geselecteerde_eenheid.bewegen}")
-                        if eenheid.cordinaten.x == self.aangepaste_x and eenheid.cordinaten.y == self.aangepaste_y and self.geselecteerde_eenheid.bereik >= self.geselecteerde_eenheid.verschil / 16:
+                        if eenheid.cordinaten.x == self.teken_cordinaten.x and eenheid.cordinaten.y == self.teken_cordinaten.y and self.geselecteerde_eenheid.bereik >= self.geselecteerde_eenheid.verschil / 16:
                             self.kan_ik_aanvallen = True
                             # self.schietanimatie = 0
                             if positiefx_verschil > positiefy_verschil:
@@ -984,9 +988,9 @@ class Game():
                             else:
                                 duur_schietanimatie = y_verschil * schietrichting_y
                             schietanimatie_x = self.geselecteerde_eenheid.cordinaten.x
-                            einde_schietanimatie_x = self.aangepaste_x
+                            einde_schietanimatie_x = self.teken_cordinaten.x
                             schietanimatie_y = self.geselecteerde_eenheid.cordinaten.y
-                            einde_schietanimatie_y = self.aangepaste_y
+                            einde_schietanimatie_y = self.teken_cordinaten.y
                             if self.geselecteerde_eenheid.bereik > 1:
                                 new_munitie = Munitie(self.geselecteerde_eenheid, duur_schietanimatie, schietanimatie_x, schietanimatie_y, einde_schietanimatie_x, einde_schietanimatie_y, schietrichting_x, schietrichting_y)
                                 self.munieties.append(new_munitie)
@@ -1005,7 +1009,7 @@ class Game():
                                 self.dood_eenhijd(eenheid)
                             break
 
-                        elif self.kortste_weg != False and positiefy_verschil == 0 and eenheid.cordinaten.x == self.aangepaste_x and eenheid.cordinaten.y == self.aangepaste_y and self.kan_ik_verplaatsen:
+                        elif self.kortste_weg != False and positiefy_verschil == 0 and eenheid.cordinaten.x == self.teken_cordinaten.x and eenheid.cordinaten.y == self.teken_cordinaten.y and self.kan_ik_verplaatsen:
                             self.kan_ik_aanvallen = True
                             for bezegeeenheid in self.eenheiden[self.geselecterde_kleur]:
                                 if bezegeeenheid.is_geselecteerd:
@@ -1024,7 +1028,7 @@ class Game():
                             if eenheid.gezondheid <= 0 or eenheid.moraal <= 0:
                                 self.dood_eenhijd(eenheid)
                             break
-                        elif self.kortste_weg != False and positiefx_verschil == 0 and eenheid.x == self.aangepaste_x and eenheid.y == self.aangepaste_y  and self.kan_ik_verplaatsen:
+                        elif self.kortste_weg != False and positiefx_verschil == 0 and eenheid.x == self.teken_cordinaten.x and eenheid.y == self.teken_cordinaten.y  and self.kan_ik_verplaatsen:
                             self.kan_ik_aanvallen = True
                             for bezegeeenheid in self.eenheiden[self.geselecterde_kleur]:
                                 if bezegeeenheid.is_geselecteerd:
