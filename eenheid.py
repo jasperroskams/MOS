@@ -1576,6 +1576,7 @@ class Eenheid():
     def __init__(self, kleur, welk_type, nivo, x, y, T, Boot):
         self.kleur = kleur
         self.welk_type = welk_type
+        self.orginele_eenheid = self.welk_type
         self.nivo = nivo
         self.x = x
         self.y = y
