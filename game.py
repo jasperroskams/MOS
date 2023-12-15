@@ -148,8 +148,6 @@ class Game():
         self.aan_het_spelen = True
         terrein.randomterrein(self)
 
-
-
     def nieuw_eenheid(self, k, t, n, x, y, T, B):
         neweenheid = Eenheid(k, t, n, x, y, T, B)
         self.eenheiden[k].append(neweenheid)
@@ -216,8 +214,8 @@ class Game():
             self.cordinaten = GameCoordinaat((pyxel.mouse_x // 16) * 16, (pyxel.mouse_y // 16) * 16, self.zoom)
             # self.x = (pyxel.mouse_x // 16) * 16
             # self.y = (pyxel.mouse_y // 16) * 16
-            self.game_cordinaten.x = self.cordinaten.x
-            self.game_cordinaten.y = self.cordinaten.y
+            self.game_cordinaten.x = self.cordinaten.x + self.begin_teken_x * -1
+            self.game_cordinaten.y = self.cordinaten.y + self.begin_teken_y * -1
             self.teken_cordinaten.x = self.game_cordinaten.x * 16 + self.begin_teken_x * -16
             self.teken_cordinaten.y = self.game_cordinaten.y * 16 + self.begin_teken_y * -16
             # print(self.x, self.y, self.aangepaste_x, self.aangepaste_y)
@@ -531,8 +529,6 @@ class Game():
                 self.boot = not self.boot
                 self.type = 0
 
-
-
     def draw(self):
 #///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         pyxel.cls(0)
@@ -834,8 +830,6 @@ class Game():
             # if pyxel.btn(pyxel.KEY_N):
             #     pyxel.blt(0, 0, 1, 0, 0, 256, 256)
 
-
-
     def eenheid_plaatsen_of_verplaatsen(self):
         vlakterijn = getTerrein()
         self.kan_ik_verplaatsen = True
@@ -1104,6 +1098,8 @@ class Game():
             for x, tegel in enumerate(rij):
                 tegel.ben_ik_zichtbaar = False
 
+    def game_cordinaat_naar_pyxel_cordinaat(self, x_of_y):
+        return x_of_y * 16
 
     def highlight(self, x, y):
         pyxel.blt(x, y, 0, 0, 160, 16, 16, pyxel.COLOR_BLACK)
@@ -1116,5 +1112,3 @@ class Game():
             return 7
         else:
             return 16
-
-

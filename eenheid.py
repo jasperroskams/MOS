@@ -1577,7 +1577,7 @@ class Eenheid():
         self.kleur = kleur
         self.welk_type = welk_type
         self.nivo = nivo
-        self.cordinaten = GameCoordinaat(x, y, 16)
+        self.cordinaten = GameCoordinaat(x, y, 1)
         # self.x = x
         # self.y = y
         self.orginele_eenheid = self.welk_type
@@ -1805,16 +1805,16 @@ class Eenheid():
                         pyxel.rect(self.cordinaten.x + extra_x, self.cordinaten.y + extra_y, 15, 15, 6)
             if self.is_zichtbaar:
                 if self.boot == 1:
-                    pyxel.blt(self.cordinaten.x*16   + extra_x, self.cordinaten.y*16      + extra_y, 0, self.nivo * 16     , self.kleur * 16 + 80, 16, 16 ,pyxel.COLOR_BLACK)
-                    pyxel.blt(self.cordinaten.x*16   + extra_x, self.cordinaten.y*16      + extra_y, 0, self.welk_type * 16 + self.extra_u, (self.kleur * 16)+ self.extra_v, 16, 16 ,pyxel.COLOR_BLACK)
-                    pyxel.blt(self.cordinaten.x*16   + extra_x, self.cordinaten.y*16 + 14 + extra_y, 0, 0, self.kleur * 16 + 80, self.gezondheid / (self.begin_gezondheid / 6), 1, pyxel.COLOR_BLACK)
-                    pyxel.blt(self.cordinaten.x*16+9 + extra_x, self.cordinaten.y*16 + 14 + extra_y, 0, 0, self.kleur * 16 + 80,self.moraal/(self.begin_moraal/6), 1 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.x)   + extra_x, game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.y)      + extra_y, 0, self.nivo * 16     , self.kleur * 16 + 80, 16, 16 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.x)   + extra_x, game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.y)      + extra_y, 0, self.welk_type * 16 + self.extra_u, (self.kleur * 16)+ self.extra_v, 16, 16 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.x)   + extra_x, game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.y) + 14 + extra_y, 0, 0, self.kleur * 16 + 80, self.gezondheid / (self.begin_gezondheid / 6), 1, pyxel.COLOR_BLACK)
+                    pyxel.blt(game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.x)+9 + extra_x, game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.y) + 14 + extra_y, 0, 0, self.kleur * 16 + 80,self.moraal/(self.begin_moraal/6), 1 ,pyxel.COLOR_BLACK)
 
                 else:
-                    pyxel.blt(self.cordinaten.x*16   + extra_x, self.cordinaten.y*16      + extra_y, 0, self.nivo * 16     , self.kleur * 16 + 80, 16, 16 ,pyxel.COLOR_BLACK)
-                    pyxel.blt(self.cordinaten.x*16   + extra_x, self.cordinaten.y*16      + extra_y, 0, self.welk_type * 16 + self.extra_u, (self.kleur * 16) + self.extra_v, 16, 16 ,pyxel.COLOR_BLACK)
-                    pyxel.blt(self.cordinaten.x*16   + extra_x, self.cordinaten.y*16 + 14 + extra_y, 0, 0, self.kleur * 16 + 80, self.gezondheid / (self.begin_gezondheid / 6), 1, pyxel.COLOR_BLACK)
-                    pyxel.blt(self.cordinaten.x*16+9 + extra_x, self.cordinaten.y*16 + 14 + extra_y, 0, 0 , self.kleur * 16 + 80, self.moraal/(self.begin_moraal/6), 1 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.x)   + extra_x, game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.y)      + extra_y, 0, self.nivo * 16     , self.kleur * 16 + 80, 16, 16 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.x)   + extra_x, game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.y)      + extra_y, 0, self.welk_type * 16 + self.extra_u, (self.kleur * 16) + self.extra_v, 16, 16 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.x)   + extra_x, game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.y) + 14 + extra_y, 0, 0, self.kleur * 16 + 80, self.gezondheid / (self.begin_gezondheid / 6), 1, pyxel.COLOR_BLACK)
+                    pyxel.blt(game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.x)+9 + extra_x, game.game_cordinaat_naar_pyxel_cordinaat(self.cordinaten.y) + 14 + extra_y, 0, 0 , self.kleur * 16 + 80, self.moraal/(self.begin_moraal/6), 1 ,pyxel.COLOR_BLACK)
 
 
         else:
