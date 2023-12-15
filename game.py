@@ -695,6 +695,7 @@ class Game():
                                 pyxel.text(dode_x + 16 + self.begin_teken_x * 16, dode_y + 8 + self.begin_teken_y * 16, str(int(eenheid.schade_gedaan)), self.lijst_met_eenheidkleuren[eenheid.kleur])
                                 pyxel.text(dode_x + 32 + self.begin_teken_x * 16, dode_y + self.begin_teken_y * 16, str(int(eenheid.eenheden_gedood)), self.lijst_met_eenheidkleuren[eenheid.kleur])
                                 pyxel.text(dode_x + 32 + self.begin_teken_x * 16, dode_y + 8+ self.begin_teken_y * 16, str(int(eenheid.ervaring)), self.lijst_met_eenheidkleuren[eenheid.kleur])
+                                eenheid.welk_type = eenheid.
                                 eenheid.draw(self, False)
                                 dode_y += 16
                                 if dode_y == self.game_hoogte:
