@@ -19,7 +19,7 @@ class Blok():
         self.ben_ik_zichtbaar = False
         self.vorige_ben_ik_zichtbaar = False
         self.ben_ik_voledig_zichtbaar = False
-        self.grote = 3
+        self.grote = 1
         self.u2 = U_Vs[self.grote][U]
         self.w2 = 0
         self.h2 = 4 * pow(2, (self.grote + 1))

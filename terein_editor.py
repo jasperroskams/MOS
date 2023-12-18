@@ -24,7 +24,15 @@ class Terein_editor():
                     self.geselecterde_ondergrond = pyxel.mouse_x // 16
                 if pyxel.mouse_x < 32 * 7 and pyxel.mouse_y < 32 * 7:
                     if self.geselecterd_tekenvoorwerp == PEN:
-                        terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] = self.geselecterde_ondergrond
+                        if terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] == 2 and self.geselecterde_ondergrond == 4:
+                            terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] = 5
+                        elif terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] == 4 and self.geselecterde_ondergrond == 2:
+                            terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] = 5
+                        else:
+                            if terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] == 5 and (self.geselecterde_ondergrond == 4 or self.geselecterde_ondergrond == 2):
+                                pass
+                            else:
+                                terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] = self.geselecterde_ondergrond
                     elif self.geselecterd_tekenvoorwerp == EMMER:
                         self.is_bezig = True
                         # print("opvulleeeeeeen!!!!!!!!!!")
