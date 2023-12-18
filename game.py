@@ -362,9 +362,9 @@ class Game():
                 if pyxel.btnr(pyxel.MOUSE_BUTTON_RIGHT):
                     self.val_aan()
                     if self.eenheden_aan_het_plaatsen:
-                        if self.eenheiden_cordinaten[self.teken_cordinaten.y // 16][self.teken_cordinaten.x // 16] != None:
-                            eenheid = self.eenheiden_cordinaten[self.teken_cordinaten.y // 16][self.teken_cordinaten.x // 16]
-                            self.eenheiden_cordinaten[self.teken_cordinaten.y // 16][self.teken_cordinaten.x // 16] = None
+                        if self.eenheiden_cordinaten[self.game_cordinaten.y][self.game_cordinaten.x] != None:
+                            eenheid = self.eenheiden_cordinaten[self.game_cordinaten.y][self.game_cordinaten.x]
+                            self.eenheiden_cordinaten[self.game_cordinaten.y][self.game_cordinaten.x] = None
                             self.eenheiden[self.geselecterde_kleur].remove(eenheid)
                             self.eenheiden_punten[self.geselecterde_kleur] += eenheid.nivo + 1
                             self.aantal_eenheden_geplaatst_nivo[self.geselecterde_kleur][eenheid.nivo] -= 1
@@ -383,7 +383,7 @@ class Game():
                     for eenheid in self.eenheiden[self.geselecterde_kleur]:
                         eenheid.is_zichtbaar = True
 
-                self.voorbeeldeenheid = Eenheid(self.kleur, self.type, self.nivo, 240, 0, self.T, self.boot)
+                self.voorbeeldeenheid = Eenheid(self.kleur, self.type, self.nivo, 15, 0, self.T, self.boot)
                 self.voorbeeldeenheid.is_zichtbaar = True
                 if pyxel.btnp(pyxel.KEY_P):
                     self.eenheden_aan_het_plaatsen = not self.eenheden_aan_het_plaatsen
@@ -398,7 +398,7 @@ class Game():
                             x_verchil = abs(eenheid.cordinaten.x - bezige_eenheid.cordinaten.x)
                             y_verchil = abs(eenheid.cordinaten.y - bezige_eenheid.cordinaten.y)
                             verchil = x_verchil + y_verchil
-                            if (bezige_eenheid.zicht - verchil / 16) >= eenheid.zichtbaar and eenheid.kleur != bezige_eenheid.kleur:
+                            if (bezige_eenheid.zicht - verchil) >= eenheid.zichtbaar and eenheid.kleur != bezige_eenheid.kleur:
                                 eenheid.is_zichtbaar = True
 
     #bouwen
@@ -602,10 +602,10 @@ class Game():
                                     pyxel.blt((self.begin_teken_x + x) * 16, (self.begin_teken_y + y) * 16, 2, tegel * 16, 144, 16, 16,pyxel.COLOR_BLACK)
                                 else:
                                     for bezige_eenheid in self.eenheiden[self.geselecterde_kleur]:
-                                        x_verchil = abs(x * 16 - bezige_eenheid.cordinaten.x)
-                                        y_verchil = abs(y * 16 - bezige_eenheid.cordinaten.y)
+                                        x_verchil = abs(x - bezige_eenheid.cordinaten.x)
+                                        y_verchil = abs(y - bezige_eenheid.cordinaten.y)
                                         verchil = x_verchil + y_verchil
-                                        if (bezige_eenheid.zicht - verchil / 16) + 4 >= self.ondergrond_zicht[vlakterijn[y][x]]:
+                                        if (bezige_eenheid.zicht - verchil) + 4 >= self.ondergrond_zicht[vlakterijn[y][x]]:
                                             self.lijst_met_terijnblokken[y][x].ben_ik_zichtbaar = True
 
 # bouwen
@@ -645,10 +645,10 @@ class Game():
                                         pyxel.rect(x, y, 1, 1, self.lijst_met_terijnkleuren[tegel])
                                     else:
                                         for bezige_eenheid in self.eenheiden[self.geselecterde_kleur]:
-                                            x_verchil = abs(x * 16 - bezige_eenheid.cordinaten.x)
-                                            y_verchil = abs(y * 16 - bezige_eenheid.cordinaten.y)
+                                            x_verchil = abs(x - bezige_eenheid.cordinaten.x)
+                                            y_verchil = abs(y - bezige_eenheid.cordinaten.y)
                                             verchil = x_verchil + y_verchil
-                                            if (bezige_eenheid.zicht - verchil / 16) + 4 >= self.ondergrond_zicht[vlakterijn[y][x]]:
+                                            if (bezige_eenheid.zicht - verchil) + 4 >= self.ondergrond_zicht[vlakterijn[y][x]]:
                                                 pyxel.rect(x, y, 1, 1, self.lijst_met_terijnkleuren[tegel])
                                                 # pyxel.blt((self.begin_teken_x + x) * 16, (self.begin_teken_y + y) * 16, 2, tegel * 16, 144, 16, 16, pyxel.COLOR_BLACK)
 
@@ -850,7 +850,7 @@ class Game():
         elif not self.eenheden_aan_het_plaatsen:
             for geselecteerde_eenheid in self.eenheiden[self.geselecterde_kleur]:
                 # print(geselecteerde_eenheid.boot)
-                if geselecteerde_eenheid.cordinaten.x == self.teken_cordinaten.x and geselecteerde_eenheid.cordinaten.y == self.teken_cordinaten.y and not geselecteerde_eenheid.is_geweest:
+                if geselecteerde_eenheid.cordinaten.x == self.pyxel_cordinaat_game_cordinaat_naar(self.teken_cordinaten.x) - self.begin_teken_x and geselecteerde_eenheid.cordinaten.y == self.pyxel_cordinaat_game_cordinaat_naar(self.teken_cordinaten.y) - self.begin_teken_y and not geselecteerde_eenheid.is_geweest:
                     for eenheid in self.eenheiden[self.geselecterde_kleur]:
                         if eenheid.cordinaten.x != self.teken_cordinaten.x or eenheid.cordinaten.y != self.teken_cordinaten.y:
                             eenheid.is_geselecteerd = False
@@ -1100,6 +1100,9 @@ class Game():
 
     def game_cordinaat_naar_pyxel_cordinaat(self, x_of_y):
         return x_of_y * 16
+
+    def pyxel_cordinaat_game_cordinaat_naar(self, x_of_y):
+        return x_of_y // 16
 
     def highlight(self, x, y):
         pyxel.blt(x, y, 0, 0, 160, 16, 16, pyxel.COLOR_BLACK)
