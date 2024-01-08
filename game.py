@@ -759,9 +759,9 @@ class Game():
 
                     if self.geselecteerde_eenheid:
                         self.highlight(self.geselecteerde_eenheid.cordinaten.x + self.begin_teken_x * 16, self.geselecteerde_eenheid.cordinaten.y + self.begin_teken_y * 16)
-                        self.kortste_weg = kan_ik_tot_hier(self.x // 16 - self.begin_teken_x, self.y // 16 - self.begin_teken_y, self, self.geselecteerde_eenheid)
+                        self.kortste_weg = kan_ik_tot_hier(self.game_cordinaten.x // 16 - self.begin_teken_x, self.game_cordinaten.y // 16 - self.begin_teken_y, self, self.geselecteerde_eenheid)
                         if self.kortste_weg != False:
-                            self.highlight(self.x, self.y)
+                            self.highlight(self.game_cordinaten.x, self.game_cordinaten.y)
                     for munitie in self.munieties:
                         munitie.draw(self)
 
