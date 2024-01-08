@@ -19,13 +19,13 @@ class Blok():
         self.ben_ik_zichtbaar = False
         self.vorige_ben_ik_zichtbaar = False
         self.ben_ik_voledig_zichtbaar = False
-        self.grote = 1
-        self.u2 = U_Vs[self.grote][U]
+        self.grote = 3
+        self.u2 = U_Vs[self.grote - 1][U]
         self.w2 = 0
-        self.h2 = 4 * pow(2, (self.grote + 1))
-        self.x2 = 128 - 8 * pow(2, (self.grote +1 ))
-        self.y2 = 128 - 4 * pow(2, (self.grote +1 ))
-        self.animatiesnelheid = 0.25 * pow(2, self.grote + 1)
+        self.h2 = 6 * pow(2, (self.grote))
+        self.x2 = 128 - 4 * pow(2, (self.grote))
+        self.y2 = 128 - 6 * pow(2, (self.grote))
+        self.animatiesnelheid = 0.25 * pow(2, self.grote)
 
 
 
@@ -55,15 +55,15 @@ class Blok():
                 self.verschil = -1
 
 
-        pyxel.blt(self.x2, 96, 1, self.u2, U_Vs[self.grote][V], self.w2, self.h2, pyxel.COLOR_PURPLE)
-        if 110 <= self.timer <= 109 + 64 // self.animatiesnelheid:
+        pyxel.blt(self.x2, 96, 1, self.u2, U_Vs[self.grote - 1][V], self.w2, self.h2, pyxel.COLOR_PURPLE)
+        if 110 <= self.timer <= 109 + 32:# // self.grote:
             self.w2 += self.animatiesnelheid
-        if 110 + (256 // self.animatiesnelheid) <= self.timer:# <= 110 + (128 // self.animatiesnelheid):
+        if 109 + 64  <= self.timer:# <= 110 + (128 // self.animatiesnelheid):
             self.u2 += self.animatiesnelheid
             self.w2 -= self.animatiesnelheid
             self.x2 += self.animatiesnelheid
 
-        if 110 + (64 // self.animatiesnelheid) + (256 // self.animatiesnelheid) <= self.timer:
+        if 110 + 96 <= self.timer:
             self.verschil = 0
             game.aan_het_spelen = True
             if len(game.terrein) < 17:

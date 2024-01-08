@@ -147,8 +147,8 @@ class Game():
                 [None,]*32
             )
         self.aan_het_spelen = False
-        self.aan_het_spelen = True
-        terrein.randomterrein(self)
+        # self.aan_het_spelen = True
+        # terrein.randomterrein(self)
 
 
 
