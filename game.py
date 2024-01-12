@@ -8,7 +8,7 @@ from blokken import *
 import route
 from eenheid import Eenheid, eenheden_sterren
 from terrein import *
-from route import kan_ik_tot_hier
+from route import route
 # import AI
 from munitie import *
 from uitleg import toon_menu
