@@ -758,10 +758,10 @@ class Game():
                         pyxel.rect(self.breedte - 5, 0, 4, 4, self.lijst_met_eenheidkleuren[self.geselecterde_kleur])
 
                     if self.geselecteerde_eenheid:
-                        self.highlight(self.geselecteerde_eenheid.cordinaten.x + self.begin_teken_x * 16, self.geselecteerde_eenheid.cordinaten.y + self.begin_teken_y * 16)
+                        self.highlight(self.geselecteerde_eenheid.cordinaten.x + self.teken_cordinaten.x, self.geselecteerde_eenheid.cordinaten.y + self.teken_cordinaten.y)
                         self.kortste_weg = kan_ik_tot_hier(self.game_cordinaten.x // 16 - self.begin_teken_x, self.game_cordinaten.y // 16 - self.begin_teken_y, self, self.geselecteerde_eenheid)
                         if self.kortste_weg != False:
-                            self.highlight(self.game_cordinaten.x, self.game_cordinaten.y)
+                            self.highlight(self.game_cordinaat_naar_pyxel_cordinaat(self.game_cordinaten.x), self.game_cordinaat_naar_pyxel_cordinaat(self.game_cordinaten.y))
                     for munitie in self.munieties:
                         munitie.draw(self)
 
@@ -793,7 +793,7 @@ class Game():
 
                         for kleur in self.eenheiden:
                             for eenheid in kleur:
-                                if eenheid.cordinaten.x == self.aangepaste_x and eenheid.cordinaten.y == self.aangepaste_y and eenheid.kleur != self.geselecterde_kleur and eenheid.is_zichtbaar:
+                                if eenheid.cordinaten.x == self.cordinaten.x and eenheid.cordinaten.y == self.cordinaten.y and eenheid.kleur != self.geselecterde_kleur and eenheid.is_zichtbaar:
                                     beginx = len(tegestander_info_namen) * 6 + 10
                                     tegestander_info = [str(int(eenheid.gezondheid)), str(int(eenheid.moraal)), str(int(eenheid.bereik)), str(int(eenheid.verdedigen)), str(int(eenheid.aanvallen)), str(int(eenheid.aanvallen_moraal))]
                                     pyxel.rect(0, self.hoogte - beginx, 75, beginx - 6, 7)
@@ -807,8 +807,8 @@ class Game():
 
 #terijn info
                     if self.toon_info:
-                        x = self.aangepaste_x // 16
-                        y = self.aangepaste_y // 16
+                        x = self.cordinaten.x
+                        y = self.cordinaten.y
                         if 0 <= x < self.game_breedte // 16 and 0 <= y < self.game_hoogte // 16:
                             vlakterijn = getTerrein()
                             i = vlakterijn[y][x]
@@ -850,7 +850,7 @@ class Game():
         elif not self.eenheden_aan_het_plaatsen:
             for geselecteerde_eenheid in self.eenheiden[self.geselecterde_kleur]:
                 # print(geselecteerde_eenheid.boot)
-                if geselecteerde_eenheid.cordinaten.x == self.pyxel_cordinaat_game_cordinaat_naar(self.teken_cordinaten.x) - self.begin_teken_x and geselecteerde_eenheid.cordinaten.y == self.pyxel_cordinaat_game_cordinaat_naar(self.teken_cordinaten.y) - self.begin_teken_y and not geselecteerde_eenheid.is_geweest:
+                if geselecteerde_eenheid.cordinaten.x == self.game_cordinaten.x and geselecteerde_eenheid.cordinaten.y == self.game_cordinaten.y and not geselecteerde_eenheid.is_geweest:
                     for eenheid in self.eenheiden[self.geselecterde_kleur]:
                         if eenheid.cordinaten.x != self.teken_cordinaten.x or eenheid.cordinaten.y != self.teken_cordinaten.y:
                             eenheid.is_geselecteerd = False
