@@ -3,7 +3,7 @@ from terrein import *
 ondergrond_impact = [2, 3, 5, 3, 1, 1, 2]
 ondergrond_impact_boot = [200, 200, 2, 200, 200, 200, 200]
 uithouding_terijn = [1, 1.5, 3, 2, 0.5, 0.5, 1]
-uithouding_terijn_boot = [100, 100, 1, 200, 500, 500, 100]
+uithouding_terijn_boot = [100, 100, 0.5, 200, 500, 500, 100]
 bouwsel_impact =     [0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 uithouding_bouwsel = [0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 nieuwe_lijst_met_tegels = []

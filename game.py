@@ -901,52 +901,53 @@ class Game():
                 bezegeeenheid.y = self.aangepaste_y
 
     def Naar_achter(self, geduwde, x, y, positiefx_verschil, positiefy_verschil):
-        naar_achter_type_aanval = self.geselecteerde_eenheid.duwen#[4, 2, 5, 0, 0, 1]
-        naar_achter_type_verdedigen = geduwde.duwbaarhijd#[3, 5, 4, 1, 0, 1]
-        naar_achter_type_ondergrond = [1, 2, 10, 3, 0, 0, 4]
-        ondergrond = naar_achter_type_ondergrond[self.terrein[geduwde.y // 16][geduwde.x // 16]]
-        self.naar_achter = random.triangular(0, 10)
-        if self.naar_achter + naar_achter_type_verdedigen + ondergrond <= -2 + positiefx_verschil * 2  + positiefy_verschil * 2 + naar_achter_type_aanval:
-            aantal_naast = 0
-            # if self.geselecteerde_eenheid.bereik < 2:
-            if x < 0:
-                x = -16
-            elif x == 0:
-                x = 0
-            else:
-                x = 16
-            if y < 0:
-                y = -16
-            elif y == 0:
-                y = 0
-            else:
-                y = 16
-            if 0 < geduwde.x < self.game_breedte - 16 and 0 < geduwde.y < self.game_hoogte - 16:
-                kan_ik_naar_achter = True
-            else:
-                kan_ik_naar_achter = False
-            for i, kleur in enumerate(self.eenheiden):
-                for eenheid in kleur:
-                    if eenheid.x - x == geduwde.x and eenheid.y - y == geduwde.y:
-                        kan_ik_naar_achter = False
-                    x_verschil = abs(geduwde.x - x - eenheid.x)
-                    y_verschil = abs(geduwde.y - y - eenheid.y)
-                    verschil = x_verschil + y_verschil
-                    if verschil <= 16 and eenheid.kleur == geduwde.kleur:
-                        aantal_naast += 1
-            if aantal_naast > 1:
-                kan_ik_naar_achter = False
-            if kan_ik_naar_achter:
+        if self.geselecteerde_eenheid.munitie == 0:
+            naar_achter_type_aanval = self.geselecteerde_eenheid.duwen#[4, 2, 5, 0, 0, 1]
+            naar_achter_type_verdedigen = geduwde.duwbaarhijd#[3, 5, 4, 1, 0, 1]
+            naar_achter_type_ondergrond = [1, 2, 10, 3, 0, 0, 4]
+            ondergrond = naar_achter_type_ondergrond[self.terrein[geduwde.y // 16][geduwde.x // 16]]
+            self.naar_achter = random.triangular(0, 10)
+            if self.naar_achter + naar_achter_type_verdedigen + ondergrond <= -2 + positiefx_verschil * 2  + positiefy_verschil * 2 + naar_achter_type_aanval:
+                aantal_naast = 0
+                # if self.geselecteerde_eenheid.bereik < 2:
+                if x < 0:
+                    x = -16
+                elif x == 0:
+                    x = 0
+                else:
+                    x = 16
+                if y < 0:
+                    y = -16
+                elif y == 0:
+                    y = 0
+                else:
+                    y = 16
+                if 0 < geduwde.x < self.game_breedte - 16 and 0 < geduwde.y < self.game_hoogte - 16:
+                    kan_ik_naar_achter = True
+                else:
+                    kan_ik_naar_achter = False
                 for i, kleur in enumerate(self.eenheiden):
                     for eenheid in kleur:
-                        if eenheid.x + x == geduwde.x and eenheid.y + y == geduwde.y:
-                            eenheid.x += x
-                            eenheid.y += y
-                            eenheid.uithouding -= 1
-                geduwde.x += x
-                geduwde.y += y
-                self.balans(self.geselecterde_kleur, geduwde.kleur, geduwde.nivo)
-            pass
+                        if eenheid.x - x == geduwde.x and eenheid.y - y == geduwde.y:
+                            kan_ik_naar_achter = False
+                        x_verschil = abs(geduwde.x - x - eenheid.x)
+                        y_verschil = abs(geduwde.y - y - eenheid.y)
+                        verschil = x_verschil + y_verschil
+                        if verschil <= 16 and eenheid.kleur == geduwde.kleur:
+                            aantal_naast += 1
+                if aantal_naast > 1:
+                    kan_ik_naar_achter = False
+                if kan_ik_naar_achter:
+                    for i, kleur in enumerate(self.eenheiden):
+                        for eenheid in kleur:
+                            if eenheid.x + x == geduwde.x and eenheid.y + y == geduwde.y:
+                                eenheid.x += x
+                                eenheid.y += y
+                                eenheid.uithouding -= 1
+                    geduwde.x += x
+                    geduwde.y += y
+                    self.balans(self.geselecterde_kleur, geduwde.kleur, geduwde.nivo)
+                pass
 
     def val_aan(self):
         self.kan_ik_verplaatsen = True
