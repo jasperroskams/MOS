@@ -15,11 +15,15 @@ class Terein_editor():
         self.geselecterde_ondergrond = 0
         self.geselecterd_tekenvoorwerp = 0
         self.is_bezig = False
+        self.nog_op_te_vulen_tegels = []
 
     def update(self, game):
         terrein = getTerrein()
         if game.aan_het_editeren:
-            if pyxel.btn(pyxel.MOUSE_BUTTON_LEFT):
+            if pyxel.btn(pyxel.MOUSE_BUTTON_LEFT) or self.is_bezig:
+                if self.is_bezig:
+                    for tegel in self.nog_op_te_vulen_tegels:
+                        self.opvulen(tegel[0], tegel[1], tegel[2], tegel[4])
                 if pyxel.mouse_x <= len(lijst_met_terijnkleuren) * 16 and pyxel.mouse_y >= game.hoogte - 16:
                     self.geselecterde_ondergrond = pyxel.mouse_x // 16
                 if pyxel.mouse_x < 32 * 7 and pyxel.mouse_y < 32 * 7:
@@ -40,9 +44,9 @@ class Terein_editor():
                         terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] = self.geselecterde_ondergrond
                         # print('gedaan')
                         self.is_bezig = False
-                    elif self.geselecterd_tekenvoorwerp == VLAK:
-                        self.vierkant()
-                        pass
+                    # elif self.geselecterd_tekenvoorwerp == VLAK:
+                    #     self.vierkant()
+                    #     pass
                 if pyxel.mouse_x >= len(lijst_met_terijnkleuren) * 16 and pyxel.mouse_y >= game.hoogte - 16:
                     self.geselecterd_tekenvoorwerp = pyxel.mouse_x // 16 - (len(lijst_met_terijnkleuren))
             if pyxel.btn(pyxel.MOUSE_BUTTON_RIGHT):
@@ -82,7 +86,9 @@ class Terein_editor():
                     if (ix == 0 or iy == 0) and (ix != 0 or iy != 0):
                         if 0 <= y + iy <= 31 and 0 <= x + ix <= 31:
                             if terrein[y + iy][x + ix] == kleur:
-                                self.opvulen(y + iy, x + ix, kleur, terrein)
+                                new_op_te_vulen_tegel = [y + iy, x + ix, kleur, terrein]
+                                self.nog_op_te_vulen_tegels.append(new_op_te_vulen_tegel)
+                                print(self.nog_op_te_vulen_tegels)
 
 
     def vierkant(self, beginX, beginY, eindX, eindY, kleur, terrein):
