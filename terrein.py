@@ -154,29 +154,28 @@ def randomterrein(game):
                     if ypos < 0:
                         ypos = 0
 
-    for y, rij in enumerate(vlakterrein):
-        for x, tegel in enumerate(rij):
-            aantal_naast = 0
-            max_aantal_naast = 4
-            while max_aantal_naast >= 3:
-                for y, rij in enumerate(vlakterrein):
-                    for x, tegel in enumerate(rij):
-                        if y != 0 and y != hoogte and x != 0 and x != breedte:
-                            if vlakterrein[y - 1][x] == 2:
-                                aantal_naast += 1
-                            if vlakterrein[y][x - 1] == 2:
-                                aantal_naast += 1
-                            if vlakterrein[y][x + 1] == 2:
-                                aantal_naast += 1
-                            if vlakterrein[y + 1][x] == 2:
-                                aantal_naast += 1
-                            if aantal_naast >= max_aantal_naast:
-                                if vlakterrein[y][x] == 2:
-                                    print(vlakterrein[y][x])
-                                    vlakterrein[y][x] = 7
-                                    print(vlakterrein[y][x])
-                            aantal_naast = 0
-                max_aantal_naast -= 1
+
+        aantal_naast = 0
+        max_aantal_naast = 4
+        while max_aantal_naast >= 4:
+            for y, rij in enumerate(vlakterrein):
+                for x, tegel in enumerate(rij):
+                    if y != 0 and y != hoogte and x != 0 and x != breedte:
+                        if vlakterrein[y - 1][x] == 2:
+                            aantal_naast += 1
+                        if vlakterrein[y][x - 1] == 2:
+                            aantal_naast += 1
+                        if vlakterrein[y][x + 1] == 2:
+                            aantal_naast += 1
+                        if vlakterrein[y + 1][x] == 2:
+                            aantal_naast += 1
+                        if aantal_naast >= max_aantal_naast:
+                            if vlakterrein[y][x] == 2:
+                                print(vlakterrein[y][x])
+                                vlakterrein[y][x] = 7
+                                print(vlakterrein[y][x])
+                        aantal_naast = 0
+            max_aantal_naast -= 1
 
 
 
