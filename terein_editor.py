@@ -1,7 +1,7 @@
 import pyxel
 
 from terrein import *
-lijst_met_terijnkleuren = [11, 3, 6, 13, 15, 4, 14]
+lijst_met_terijnkleuren = [11, 3, 6, 13, 15, 4, 14, 5]
 
 PEN = 0
 EMMER = 1
