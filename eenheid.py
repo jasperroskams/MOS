@@ -1581,11 +1581,12 @@ class Eenheid():
         self.nivo = nivo
         self.x = x
         self.y = y
+        self.T = T
         if Boot == False:
             self.boot = 1
         else:
             self.boot = 0
-        eenheid = self.eenheden[self.boot][T][kleur][welk_type][nivo]
+        eenheid = self.eenheden[self.boot][self.T][kleur][welk_type][nivo]
         self.begin_verdedigen = eenheid[VERDEDIGEN]
         self.begin_aanvallen = eenheid[AANVALLEN]
         self.begin_aanvallen_moraal = eenheid[AANVALLENMORAAL]
@@ -1791,6 +1792,15 @@ class Eenheid():
 
 
     def draw(self, game, is_voorbeeld):
+        self.u = self.welk_type * 16 + self.extra_u
+        self.v = (self.kleur * 16)+ self.extra_v
+        for tekening in spesiaal_tekening:
+            if self.T == tekening[0]:
+                if self.kleur == tekening[1]:
+                    if self.welk_type == tekening[2]:
+                        if self.nivo == tekening[3]:
+                            self.u = tekening[4]
+                            self.v = tekening[5]
         if is_voorbeeld:
             extra_x = 0
             extra_y = 0
@@ -1806,7 +1816,7 @@ class Eenheid():
             if self.is_zichtbaar:
                 if self.boot == 1:
                     pyxel.blt(self.x   + extra_x, self.y      + extra_y, 0, self.nivo * 16     , self.kleur * 16 + 80, 16, 16 ,pyxel.COLOR_BLACK)
-                    pyxel.blt(self.x   + extra_x, self.y      + extra_y, 0, self.welk_type * 16 + self.extra_u, (self.kleur * 16)+ self.extra_v, 16, 16 ,pyxel.COLOR_BLACK)
+                    pyxel.blt(self.x   + extra_x, self.y      + extra_y, 0, self.u, self.v, 16, 16 ,pyxel.COLOR_BLACK)
                     pyxel.blt(self.x + extra_x, self.y + 14 + extra_y, 0, 0, self.kleur * 16 + 80, self.gezondheid / (self.begin_gezondheid / 6), 1, pyxel.COLOR_BLACK)
                     pyxel.blt(self.x+9 + extra_x, self.y + 14 + extra_y, 0, 0, self.kleur * 16 + 80,self.moraal/(self.begin_moraal/6), 1 ,pyxel.COLOR_BLACK)
 
