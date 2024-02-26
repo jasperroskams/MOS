@@ -86,9 +86,10 @@ class Terein_editor():
                     if (ix == 0 or iy == 0) and (ix != 0 or iy != 0):
                         if 0 <= y + iy <= 31 and 0 <= x + ix <= 31:
                             if terrein[y + iy][x + ix] == kleur:
-                                new_op_te_vulen_tegel = [y + iy, x + ix, kleur, terrein]
-                                self.nog_op_te_vulen_tegels.append(new_op_te_vulen_tegel)
-                                print(self.nog_op_te_vulen_tegels)
+                                self.opvulen(y + iy, x + ix, kleur, terrein)
+                                # new_op_te_vulen_tegel = [y + iy, x + ix, kleur, terrein]
+                                # self.nog_op_te_vulen_tegels.append(new_op_te_vulen_tegel)
+                                # print(self.nog_op_te_vulen_tegels)
 
 
     def vierkant(self, beginX, beginY, eindX, eindY, kleur, terrein):

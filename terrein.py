@@ -156,7 +156,7 @@ def randomterrein(game):
 
 
         aantal_naast = 0
-        max_aantal_naast = 4
+        max_aantal_naast = 3
         while max_aantal_naast >= 4:
             for y, rij in enumerate(vlakterrein):
                 for x, tegel in enumerate(rij):

@@ -63,7 +63,7 @@ class Game():
         self.kleur = 0 #
         self.geselecterde_kleur = 0 #
         self.lijst_met_eenheidkleuren = [1, 2, 7, 8, 10] #
-        self.lijst_met_terijnkleuren = [11, 3, 6, 13, 15, 4, 14, 13, 4] #
+        self.lijst_met_terijnkleuren = [11, 3, 6, 13, 15, 4, 14, 5] #
         self.begin_eenheiden_punten = [48, 48, 48, 48, 48] #
         self.eenheiden_punten = [48, 48, 48, 48, 48] #
         self.begin_max_aantal_eenheiden = [5, 2, 2, 1, 1, 1] #
@@ -93,7 +93,7 @@ class Game():
         self.begin_teken_x = 0 #
         self.begin_teken_y = 0 #
         self.grootte = 2 #
-        self.ondergrond_zicht = [5, 9, 5, 0, 5, 5, 5] #
+        self.ondergrond_zicht = [5, 9, 5, 0, 5, 5, 5, 5] #
         self.geselecteerde_eenheid = None #
         # self.schietanimatie = 1000 #
         self.duur_schietanimatie = 32 #
