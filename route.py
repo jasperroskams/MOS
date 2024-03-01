@@ -18,7 +18,7 @@ BEWEGEN = 3
 UITHOUDING = 4
 
 
-class route():
+class Route():
     def __init__(self):
         self.kortse_weg = [0, 0, 0, 20, 0]
 
@@ -41,7 +41,6 @@ class route():
                 if tegel[X] == eind_x and tegel[Y] == eind_y and tegel[BEWEGEN] > -1:
                     if self.kortse_weg[BEWEGEN] > tegel[BEWEGEN]:
                         kortse_weg = tegel
-
                 self.rondom_kijken(tegel[X], tegel[Y], tegel[BEWEGEN], tegel[VORIGE], boot, game)
             lijst_met_tegels = nieuwe_lijst_met_tegels
         if self.kortse_weg[BEWEGEN] < 20:
@@ -79,8 +78,6 @@ class route():
                         bewegen = begin_bewegen
                         if boot == 1:
                             bewegen -= ondergrond_impact[terijn[yPos][xPos]]
-
-
                             bewegen -= bouwsel_impact[game.bouwsels[yPos][xPos]]
                         else:
                             bewegen -= ondergrond_impact_boot[terijn[yPos][xPos]]
@@ -96,7 +93,5 @@ class route():
                                 # print(vorige)
                                 tegel = [xPos, yPos, [begin_x, begin_y, vorige, bewegen, uithouding], bewegen, uithouding]
                                 nieuwe_lijst_met_tegels.append(tegel)
-
-
     # kan_ik_tot_hier(8, 0, 12, 9, 12)
     print('.')
