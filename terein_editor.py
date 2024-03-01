@@ -28,7 +28,7 @@ class Terein_editor():
                     self.geselecterde_ondergrond = pyxel.mouse_x // 16
                 if pyxel.mouse_x < 32 * 7 and pyxel.mouse_y < 32 * 7:
                     if self.geselecterd_tekenvoorwerp == PEN:
-                        if terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] == 2 and self.geselecterde_ondergrond == 4:
+                        if (terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] == 2 or terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] == 7) and self.geselecterde_ondergrond == 4:
                             terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] = 5
                         elif terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] == 4 and self.geselecterde_ondergrond == 2:
                             terrein[pyxel.mouse_y // 7][pyxel.mouse_x // 7] = 5
