@@ -27,13 +27,12 @@ class LandmachtEenheid(Eenheid):
     def __init__(self, gc, speler):
         super().__init__(gc, speler)
         self.inspanning = {
-            Rivier: 10,
-            Meer: 10,
-            Zee: 20,
+            Gras: 10,
+            Bos: 10,
+            water: 20,
+            Berg: 5,
             Weg: 1,
-            Bos: 3,
-            Gras: 2,
-            Berg: 5
+
         }
 
 
