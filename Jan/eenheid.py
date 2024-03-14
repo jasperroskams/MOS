@@ -32,6 +32,9 @@ class LandmachtEenheid(Eenheid):
             water: 20,
             Berg: 5,
             Weg: 1,
+            Brug: 0,
+            Gebouw: 0,
+            Diep_water: 0,
 
         }
 
