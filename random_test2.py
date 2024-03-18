@@ -7,7 +7,7 @@ verdedigopties = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 
 
 for i, verdedeging in enumerate(verdedigopties):
     for ii in range(0, 10000000):
-        random_getal_1 = int(random.triangular(0, 100))
+        random_getal_1 = int(random.triangular(25, 75))
         random_getal_2 = int(random.triangular(0, 25))
         random_getal_3 = int(random.triangular(75, 100))
         random_getal = (random_getal_1 + random_getal_2 + random_getal_3) // 3
